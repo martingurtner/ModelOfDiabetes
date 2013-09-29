@@ -1,0 +1,160 @@
+\documentclass{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[a4paper, inner=1.5cm, outer=2.5cm, top=2cm,
+bottom=2cm, bindingoffset=1cm]{geometry}
+\usepackage{graphicx}
+\graphicspath{{img/}}  
+\usepackage[section]{placeins}
+\usepackage{afterpage}
+\usepackage{titling}
+\usepackage{siunitx}
+\usepackage{epstopdf}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{bondgraph}
+%\usepackage{cite}
+\usepackage{booktabs}
+\usepackage{color, colortbl}
+\definecolor{Gray}{gray}{0.95}
+
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+\providecommand{\m}[1]{\ensuremath{\mathrm{#1}}}
+\providecommand{\p}[1]{\ensuremath{\partial #1}}
+
+\usepackage{listings}
+\usepackage{todonotes}
+\usetikzlibrary{shapes,arrows,decorations.markings}
+
+\begin{document}
+\title{Models for the detection of Diabetes}
+\author{J\'achym Barv\'inek, Ji\v r\'i Figura, Martin Gurtner}
+
+\maketitle
+
+% ------------------------- Bolie's diabetes model  -------------------------
+\section{Bolie's diabetes model}
+\todo[inline]{Jachym dopise teoreticky uvod}
+
+\begin{align}
+V\frac{\m{d} H}{\m{d} t}&=-F_1(H)+F_2(G)+ x\\
+V\frac{\m{d} G}{\m{d} t}&=-F_3(H,G)-F_4(H,G) + y 
+\end{align}
+
+For changes around equilibrium:
+\todo[inline]{ vi. bod 1 dopsat assumptions}
+\begin{align}
+V\frac{\m{d}h}{\m{d}t}&=-F_1(H_0+h)+F_2(G_0+g)+ x\\
+V\frac{\m{d}g}{\m{d}t}&=-F_3(H_0+h,G_0+g)-F_4(H_0+h,G_0+g)+ y
+\end{align}
+
+Linearization:
+\begin{align}
+\frac{\m{d}h}{\m{d}t}&=-\underbrace{%
+		\frac{1}{V}\frac{\p F_1(H_0)}{\p H}}_{\alpha}h+%
+%
+\underbrace{%
+		\frac{1}{V}\frac{\p F_2(G_0)}{\p G}}_{\beta}g+O(2)+\dots \\%		
+%
+\frac{\m{d}g}{\m{d}t}&=-\frac{1}{V}\frac{\p F_3(H_0, G_0)}{\p H}h- \frac{1}{V}\frac{\p F_3(H_0, G_0)}{\p G}g-\frac{1}{V}\frac{\p F_4(H_0, G_0)}{\p H}h-\frac{1}{V}\frac{\p F_4(H_0, G_0)}{\p G}g+\mathcal{O}(2)+\dots\\%
+%
+&=-\underbrace{%
+\left(\frac{1}{V}\frac{\p F_3(H_0, G_0)}{\p H}+\frac{\p F_4(H_0, G_0)}{\p H}\right)}_{\gamma}h%
+-\underbrace{%
+\left(\frac{1}{V}\frac{\p F_3(H_0, G_0)}{\p G}+\frac{\p F_4(H_0, G_0)}{\p G}\right)}_{\delta} g+\mathcal{O}(2)+\dots
+\end{align}
+
+Linearized:
+\begin{align*}
+\frac{\m{d}h}{\m{d}t}=-\alpha h + \beta g\\
+\frac{\m{d}g}{\m{d}t}=-\gamma h - \delta g\\
+\end{align*}
+
+\begin{table}[!h]
+\renewcommand{\arraystretch}{1.3}  
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Symbol}  & \textbf{Meaning} & \textbf{Dimension}\\
+\midrule
+$V$ & volume & \si{\liter}\\
+\rowcolor{Gray}
+$x$ & rate of insulin injection & units \si{\per\hour}\\
+
+$y$ & rate of glucose injection & \si{\gram\per\hour}\\
+\rowcolor{Gray}
+$H$ & insulin concentration & units \si{\per\liter}\\
+$H_0$ & insulin concentration equilibrium & units \si{\per\liter}\\
+\rowcolor{Gray}
+$h$ & insulin concentration changes & units \si{\per\liter}\\
+$G$ & glucose concentration & \si{\gram\per\liter}\\
+\rowcolor{Gray}
+$G_0$ & glucose concentration equilibrium & \si{\gram\per\liter}\\
+$g$ & glucose concentration changes & \si{\gram\per\liter}\\
+\rowcolor{Gray}
+$F_1(H)$ & rate of insulin destruction & units \si{\per\hour}\\
+$F_2(G)$ & rate of insulin production & units \si{\per\hour}\\
+
+\rowcolor{Gray}
+$F_3(H,G)$ & rate of liver accumulation of glucose & \si{\gram\per\hour}\\
+$F_4(H,G)$ & rate of tissue utilization of glucose & \si{\gram\per\hour}\\
+\bottomrule
+\end{tabular}
+\caption{Diabetes model parameters.}
+\label{tabParam}
+\end{table}
+
+\todo[inline]{diskuze znamenek (bod 2), tabulka s popisem velicin}
+
+\section{Linearized model solution}
+\todo[inline]{bod 3, redukce na 2nd order, char. polynom, reseni; stabilita, kdy je stabilni periodicky/aperiodicky}
+
+\begin{equation}
+\ddot g+(a+d)\dot g+(bc+da)g=S(t)
+\end{equation}
+
+\begin{equation}
+\lambda^2+(a+d)\lambda+(bc+da)=0
+\end{equation}
+
+\begin{equation}
+\lambda_{1,2}=\frac{1}{2}\left(-(a+d)\pm \sqrt{(a-d)^2-4bc}\right)
+\end{equation}
+
+Since both $(a+d)$ and $(bc+da)$ are positive, the solutions are always stable, going to zero with $t\rightarrow \infty$.
+
+\section{Bolie's diabetes test}
+predpoklada kriticky tlumene reseni
+\todo[inline]{bod 4, povidani o testu}
+\todo[inline]{ploty reseni g,h, diskuze viz. 4}
+\todo[inline]{nabizi se vlozit reseny priklad, napr. 4 na str. 108}
+
+\section{Ackermann's diabetes test}
+predpoklada kmitave reseni
+\todo[inline]{opsat par rovnic ze strany 105/106}
+\todo[inline]{vyresit ten stejny priklad jako vyse}
+
+
+%\begin{figure}[h]
+%        \centering
+%        \begin{subfigure}[b]{0.5\textwidth}
+%        		\centering
+%                \includegraphics[width=\textwidth]{11a}
+%                \caption{}
+%                \label{fig11a}
+%        \end{subfigure}%
+%        %
+%        \begin{subfigure}[b]{0.5\textwidth}
+%        		\centering
+%                \includegraphics[width=\textwidth]{11b}
+%                \caption{}
+%                \label{fig11b}
+%        \end{subfigure}        
+%        
+%        \caption{Angular velocity data and its integration.}
+%        \label{figTask10}
+%\end{figure}
+
+
+
+\end{document}
