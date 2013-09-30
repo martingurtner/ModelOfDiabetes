@@ -1,5 +1,6 @@
-\documentclass[14pt]{article}
-\usepackage{extsizes}
+%\documentclass[14pt]{article}
+\documentclass{article}
+%\usepackage{extsizes}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage[a4paper, inner=1.5cm, outer=2.5cm, top=2cm,
@@ -61,22 +62,44 @@ create insufficient amounts of insulin.
 
 \section{Bolie's diabetes model}
 
-\todo[inline]{Jachym dopise teoreticky uvod}
+Bolie's diabetes model is based on the following general assumptions, taken from~\cite{fulford_modelling_1997}:
 
-\begin{align}
+\begin{enumerate}
+	\item
+	Insulin is being degraded by the liver.	
+	\item
+	A rise in the concentration of glucose in the bloodstream results in increased production of insulin by the pancreas.
+	\item
+	With increasing concentration of insulin, the glucose is more easily absorbed by the cells, i.e. it leaves the bloodstream more quickly.
+	\item
+	A rise in glucose concentration in the bloodstream results in increased glucose absorption by the liver.
+
+\end{enumerate}
+
+
+The model, described by eq.~\ref{eqbolie}, takes into account just two variables -- glucose $G$ and hormone insulin, denoted by $H$. Generally nonlinear functions on the right hand side of the equations follow directly from the assumptions above. The symbols with their corresponding meaning and units are summarized in Tab.~\ref{tabParam}. 
+
+\begin{equation}
+\label{eqbolie}
+\begin{aligned}
 V\frac{\m{d} H}{\m{d} t}&=-F_1(H)+F_2(G)+ x\\
 V\frac{\m{d} G}{\m{d} t}&=-F_3(H,G)-F_4(H,G) + y 
-\end{align}
+\end{aligned}
+\end{equation}
 
-For changes around equilibrium:
-\todo[inline]{ vi. bod 1 dopsat assumptions}
-\begin{align}
+For changes around equilibrium $H_0$, $G_0$ we can rewrite the model to:
+
+\begin{equation}
+\label{eqbolieEquilibrium}
+\begin{aligned}
 V\frac{\m{d}h}{\m{d}t}&=-F_1(H_0+h)+F_2(G_0+g)+ x\\
 V\frac{\m{d}g}{\m{d}t}&=-F_3(H_0+h,G_0+g)-F_4(H_0+h,G_0+g)+ y
-\end{align}
+\end{aligned}
+\end{equation}
 
-Linearization:
-\begin{align}
+For small changes around the equilibrium it is possible to use linearized model. By Taylor expanding the eq.~\ref{eqbolieEquilibrium} we get:
+
+\begin{align*}
 \frac{\m{d}h}{\m{d}t}&=-\underbrace{%
 		\frac{1}{V}\frac{\p F_1(H_0)}{\p H}}_{\alpha}h+%
 %
@@ -89,13 +112,20 @@ Linearization:
 \left(\frac{1}{V}\frac{\p F_3(H_0, G_0)}{\p H}+\frac{\p F_4(H_0, G_0)}{\p H}\right)}_{\gamma}h%
 -\underbrace{%
 \left(\frac{1}{V}\frac{\p F_3(H_0, G_0)}{\p G}+\frac{\p F_4(H_0, G_0)}{\p G}\right)}_{\delta} g+\mathcal{O}(2)+\dots
-\end{align}
+\end{align*}
 
-Linearized:
-\begin{align*}
+By omitting the second and higher order terms we get the following linear model:
+\begin{equation}
+\label{eqLinearized}
+\begin{aligned}
 \frac{\m{d}h}{\m{d}t}=-\alpha h + \beta g\\
 \frac{\m{d}g}{\m{d}t}=-\gamma h - \delta g\\
-\end{align*}
+\end{aligned}
+\end{equation}
+
+All of the constants $\alpha$, $\beta$, $\gamma$, $\delta$ are positive. Let's check that the signs correspond to Bolie's assumptions. If we put $g=0$ we can see from the first equation that the concentration of insulin decreases in time, which is in agreement with the first assumption.
+On the other hand, if we put $h=0$ we can see that increase in $g$ leads to increase in $h$, which is in accordance with the second assumption.
+Assumptions 3 and 4 say that rise in each of the variables results in   decrease of glucose concentration and the negative signs at both terms in the second equation reflect that.   
 
 \begin{table}[!h]
 \renewcommand{\arraystretch}{1.3}  
@@ -131,14 +161,16 @@ $F_4(H,G)$ & rate of tissue utilization of glucose & \si{\gram\per\hour}\\
 \label{tabParam}
 \end{table}
 
-\todo[inline]{diskuze znamenek (bod 2), tabulka s popisem velicin}
-
 \section{Linearized model solution}
-\todo[inline]{bod 3, redukce na 2nd order, char. polynom, reseni; stabilita, kdy je stabilni periodicky/aperiodicky}
+
+We can reduce the linearized model from eq.~\ref{eqLinearized} to a 2\textsuperscript{nd} order by differentiating the first equation and substituting $\dot h$ with the second equation. $h$ is substituted with the expression for $h$ derived from the first equation. We get:
 
 \begin{equation}
-\ddot g+(\alpha+\delta)\dot g+(\beta \gamma+\delta \alpha)g=S(t)
+\ddot g+(\alpha+\delta)\dot g+(\beta \gamma+\delta \alpha)g=0,
 \end{equation}
+%where $S(t)$ is a nonhomogeneous term reflecting external glucose input to the bloodstream.  
+
+The solutions are found by solving the characteristic polynomial
 
 \begin{equation}
 \lambda^2+(\alpha+\delta)\lambda+(\beta\gamma+\delta\alpha)=0
@@ -148,7 +180,7 @@ $F_4(H,G)$ & rate of tissue utilization of glucose & \si{\gram\per\hour}\\
 \lambda_{1,2}=\frac{1}{2}\left(-(\alpha+\delta)\pm \sqrt{(\alpha-\delta)^2-4\beta\gamma}\right)
 \end{equation}
 
-Since both $(\alpha+\delta)$ and $(\beta\gamma+\delta\alpha)$ are positive, the solutions are always stable, going to zero with $t\rightarrow \infty$.
+Since both $(\alpha+\delta)$ and $(\beta\gamma+\delta\alpha)$ are positive, the solutions are always stable, going to zero with $t\rightarrow \infty$. If the discriminant is lower than zero then the solutions go to zero periodically, otherwise aperiodically.
 
 \section{Bolie's diabetes test}
 predpoklada kriticky tlumene reseni
@@ -182,6 +214,7 @@ predpoklada kmitave reseni
 %        \label{figTask10}
 %\end{figure}
 
-
+\bibliographystyle{IEEEtran}
+\bibliography{DiabetesBibliography}
 
 \end{document}
