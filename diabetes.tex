@@ -20,11 +20,11 @@ bottom=2cm, bindingoffset=1cm]{geometry}
 \usepackage{color, colortbl}
 \definecolor{Gray}{gray}{0.95}
 
+
 \providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
 \providecommand{\m}[1]{\ensuremath{\mathrm{#1}}}
 \providecommand{\p}[1]{\ensuremath{\partial #1}}
 
-\usepackage{listings}
 \usepackage{todonotes}
 \usetikzlibrary{shapes,arrows,decorations.markings}
 
@@ -104,15 +104,14 @@ For small changes around the equilibrium it is possible to use linearized model.
 		\frac{1}{V}\frac{\p F_1(H_0)}{\p H}}_{\alpha}h+%
 %
 \underbrace{%
-		\frac{1}{V}\frac{\p F_2(G_0)}{\p G}}_{\beta}g+O(2)+\dots \\%		
+		\frac{1}{V}\frac{\p F_2(G_0)}{\p G}}_{\beta}g+\mathcal{O}(2) \\%		
 %
-\frac{\m{d}g}{\m{d}t}&=-\frac{1}{V}\frac{\p F_3(H_0, G_0)}{\p H}h- \frac{1}{V}\frac{\p F_3(H_0, G_0)}{\p G}g-\frac{1}{V}\frac{\p F_4(H_0, G_0)}{\p H}h-\frac{1}{V}\frac{\p F_4(H_0, G_0)}{\p G}g+\mathcal{O}(2)+\dots\\%
+\frac{\m{d}g}{\m{d}t}&=-\frac{1}{V}\frac{\p F_3(H_0, G_0)}{\p H}h- \frac{1}{V}\frac{\p F_3(H_0, G_0)}{\p G}g-\frac{1}{V}\frac{\p F_4(H_0, G_0)}{\p H}h-\frac{1}{V}\frac{\p F_4(H_0, G_0)}{\p G}g+\mathcal{O}(2)\\%
 %
 &=-\underbrace{%
 \left(\frac{1}{V}\frac{\p F_3(H_0, G_0)}{\p H}+\frac{\p F_4(H_0, G_0)}{\p H}\right)}_{\gamma}h%
 -\underbrace{%
-\left(\frac{1}{V}\frac{\p F_3(H_0, G_0)}{\p G}+\frac{\p F_4(H_0, G_0)}{\p G}\right)}_{\delta} g+\mathcal{O}(2)+\dots
-\end{align*}
+\left(\frac{1}{V}\frac{\p F_3(H_0, G_0)}{\p G}+\frac{\p F_4(H_0, G_0)}{\p G}\right)}_{\delta} g+\mathcal{O}(2)\end{align*}
 
 By omitting the second and higher order terms we get the following linear model:
 \begin{equation}
