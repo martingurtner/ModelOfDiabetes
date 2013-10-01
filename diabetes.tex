@@ -6,13 +6,13 @@
 \usepackage[a4paper, inner=1.5cm, outer=2.5cm, top=2cm,
 bottom=2cm, bindingoffset=1cm]{geometry}
 \usepackage{graphicx}
+\usepackage{subfigure}
 \graphicspath{{img/}}  
 \usepackage[section]{placeins}
 \usepackage{afterpage}
 \usepackage{titling}
 \usepackage{siunitx}
 \usepackage{epstopdf}
-\usepackage{subcaption}
 \usepackage{tikz}
 \usepackage{bondgraph}
 %\usepackage{cite}
@@ -25,6 +25,9 @@ bottom=2cm, bindingoffset=1cm]{geometry}
 \providecommand{\m}[1]{\ensuremath{\mathrm{#1}}}
 \providecommand{\p}[1]{\ensuremath{\partial #1}}
 
+\newcommand{\figWidth}{0.5\textwidth}
+\newcommand{\subfigWidth}{0.45\textwidth}
+
 \usepackage{todonotes}
 \usetikzlibrary{shapes,arrows,decorations.markings}
 
@@ -34,7 +37,7 @@ bottom=2cm, bindingoffset=1cm]{geometry}
 
 \maketitle
 
-% ------------------------- Bolie's diabetes model  -------------------------
+% ------------------------- Biological background  -------------------------
 \section{Biological background}
 We shall first give a short introduction to the problem by presenting the biological basis of it,
 which is helpful in understanding the mathematical formulations. 
@@ -60,6 +63,7 @@ The later is the case which happens for people suffering by the disorder Diabete
 create insufficient amounts of insulin.
 
 
+% ------------------------- Bolie's diabetes model -------------------------
 \section{Bolie's diabetes model}
 
 Bolie's diabetes model is based on the following general assumptions, taken from~\cite{fulford_modelling_1997}:
@@ -160,6 +164,7 @@ $F_4(H,G)$ & rate of tissue utilization of glucose & \si{\gram\per\hour}\\
 \label{tabParam}
 \end{table}
 
+% ------------------------- Linearized model solution -------------------------
 \section{Linearized model solution}
 
 We can reduce the linearized model from eq.~\ref{eqLinearized} to a 2\textsuperscript{nd} order by differentiating the first equation and substituting $\dot h$ with the second equation. $h$ is substituted with the expression for $h$ derived from the first equation. We get:
@@ -172,48 +177,99 @@ We can reduce the linearized model from eq.~\ref{eqLinearized} to a 2\textsupers
 The solutions are found by solving the characteristic polynomial
 
 \begin{equation}
-\lambda^2+(\alpha+\delta)\lambda+(\beta\gamma+\delta\alpha)=0
+	\label{Eq:charEqn}
+	\lambda^2+(\alpha+\delta)\lambda+(\beta\gamma+\delta\alpha)=0
 \end{equation}
 
 \begin{equation}
-\lambda_{1,2}=\frac{1}{2}\left(-(\alpha+\delta)\pm \sqrt{(\alpha-\delta)^2-4\beta\gamma}\right)
+	\label{Eq:rootsOfCharEqn}
+	\lambda_{1,2}=\frac{1}{2}\left(-(\alpha+\delta)\pm \sqrt{(\alpha-\delta)^2-4\beta\gamma}\right)
 \end{equation}
 
 Since both $(\alpha+\delta)$ and $(\beta\gamma+\delta\alpha)$ are positive, the solutions are always stable, going to zero with $t\rightarrow \infty$. If the discriminant is lower than zero then the solutions go to zero periodically, otherwise aperiodically.
 
+\subsection*{General solution}
+\begin{equation}
+	\label{Eq:genSol}
+	g(t) = A\,e^{\lambda_1 \, t} + B\,e^{\lambda_2 \, t}
+\end{equation}
+from initial conditions $g(t_0=0) = g_0$ and $\dot{g}(t_0=0) = -\delta \, g_0$
+\begin{equation*}
+	\label{Eq:genSolParams}
+	A = g_0\,\frac{\delta+\lambda_2}{\lambda_2-\lambda_1}, \qquad B = g_0\,\frac{\delta+\lambda_1}{\lambda_1-\lambda_2}.
+\end{equation*}
+
 \todo[inline]{Pridat obecne reseni}
 
-\section{Bolie's diabetes test}
-predpoklada kriticky tlumene reseni
-\todo[inline]{bod 4, povidani o testu}
-\todo[inline]{ploty reseni g,h, diskuze viz. 4}
-\todo[inline]{nabizi se vlozit reseny priklad, napr. 4 na str. 108}
 
-\section{Ackermann's diabetes test}
+% ------------------------- Testing for diabetes -------------------------
+\section{Testing for diabetes}
+Now we will make use of the diabetes model. Probably the main purpose of developing such a model is to find a test which recognizes whereas a patient has a diabetes or not. We will discuss two tests developed in early sixties, where each of them has a very similar criterion but uses the above derived model in slightly different way.
+% -----  Bolie's test -------
+\subsection{Bolie's test}
+Bolie~\cite{bolie1961coefficients} identified all parameters of the model~\eqref{eqLinearized} for a healthy person via three methods. Two of them were based on measurements of changing glucose concentration of rabbits and dogs and the identified parameters were then exptrapolated to humans. The third method utilized data from standard insulin and glucose tolerance tests. He assumed that the response of glucose concentration is critically dumped. Then he identified all parameters of the analytical response from measured data and recalculated them to parameters $\alpha$, $\beta$, $\gamma$ and $\delta$. The averaged parameters obtained by all three methods are summarized in Table~\ref{tabIdentParam}.
+
+\begin{table}[!h]
+\renewcommand{\arraystretch}{1.3}  
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Symbol}  & \textbf{Value} & \textbf{Dimension}\\
+\midrule
+$\alpha$ & $0.780$ & \si{\per\hour}\\
+\rowcolor{Gray}
+$\beta$ & $0.208$ & \si{unit\per\hour\per\gram}\\
+$\gamma$ & $4.34$ & \si{\gram\per\hour\per unit}\\
+\rowcolor{Gray}
+$\delta$ & $2.92$ & \si{\per\hour}\\
+\bottomrule
+\end{tabular}
+\caption{Identified parameters of Bolie's model}
+\label{tabIdentParam}
+\end{table}
+
+By substitution of the identified parameters from Table~\ref{tabIdentParam} into equation~\eqref{Eq:rootsOfCharEqn} we get two distinct real roots
+\begin{equation*}
+	\lambda_1 = -1.36, \qquad 	\lambda_2 = -2.34.
+\end{equation*}
+
+Time response of glucose concentration can be easily obtained through substitution of the roots $\lambda_1$ and $\lambda_2$ into the equations~\eqref{Eq:genSolParams} and \eqref{Eq:genSol}.
+\begin{equation}
+	g(t) = g_0 \left( -0.59 e^{\lambda_1\,t} + 1.59 e^{\lambda_2\,t} \right)
+\end{equation}
+
+text text text
+\begin{equation}
+	h(t) = -\frac{1}{\gamma}\left( \dot{g}(t) + \delta\,g(t)\right)
+\end{equation}
+
+text text text
+\begin{equation}
+	h(t) = -\frac{1}{\gamma}\left[   A(\lambda_1 + \delta)e^{\lambda_1\,t} + B(\lambda_2 + \delta)e^{\lambda_2\,t}  \right] = 0.211\,g_0 \left(e^{\lambda_1\,t} - e^{\lambda_2\,t} \right)
+\end{equation}
+
+\begin{figure}[h!t!]
+	\begin{center}
+	\subfigure[Glucose concentration]{
+		\includegraphics[width=\subfigWidth]{figs/boliesTestGlucose}
+		\label{Fig:boliesTestGlucose}
+	}
+	\,
+	\subfigure[Insuline concentration]{
+		\includegraphics[width=\subfigWidth]{figs/boliesTestInsulin}	     
+		\label{Fig:boliesTestInsulin}
+	}
+	\end{center}
+	\caption{Time responses of glucose and insulin concentration after glucose ingestion}
+\end{figure}
+
+% -----  Ackermann's diabetes test -------
+\subsection{Ackermann's diabetes test}
+
 predpoklada kmitave reseni
 \todo[inline]{opsat par rovnic ze strany 105/106}
 \todo[inline]{vyresit ten stejny priklad jako vyse}
 
-
-%\begin{figure}[h]
-%        \centering
-%        \begin{subfigure}[b]{0.5\textwidth}
-%        		\centering
-%                \includegraphics[width=\textwidth]{11a}
-%                \caption{}
-%                \label{fig11a}
-%        \end{subfigure}%
-%        %
-%        \begin{subfigure}[b]{0.5\textwidth}
-%        		\centering
-%                \includegraphics[width=\textwidth]{11b}
-%                \caption{}
-%                \label{fig11b}
-%        \end{subfigure}        
-%        
-%        \caption{Angular velocity data and its integration.}
-%        \label{figTask10}
-%\end{figure}
 
 \bibliographystyle{IEEEtran}
 \bibliography{DiabetesBibliography}
