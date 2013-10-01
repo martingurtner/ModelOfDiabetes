@@ -194,6 +194,7 @@ Since both $(\alpha+\delta)$ and $(\beta\gamma+\delta\alpha)$ are positive, the 
 	g(t) = A\,e^{\lambda_1 \, t} + B\,e^{\lambda_2 \, t}
 \end{equation}
 from initial conditions $g(t_0=0) = g_0$ and $\dot{g}(t_0=0) = -\delta \, g_0$
+\todo{Jiri, dopis to nejak}
 \begin{equation*}
 	\label{Eq:genSolParams}
 	A = g_0\,\frac{\delta+\lambda_2}{\lambda_2-\lambda_1}, \qquad B = g_0\,\frac{\delta+\lambda_1}{\lambda_1-\lambda_2}.
@@ -238,15 +239,47 @@ Time response of glucose concentration can be easily obtained through substituti
 	g(t) = g_0 \left( -0.59 e^{\lambda_1\,t} + 1.59 e^{\lambda_2\,t} \right)
 \end{equation}
 
-text text text
+Now we can determine the time $t_\m{r}$ when the glucose concentration returns to its steady-state value. For this purpose we put $g(t)$ from equation~\eqref{Eq:genSol} and then it directly follows
+\begin{equation*}
+	0 = A\,e^{\lambda_1 \, t_\m{r}} + B\,e^{\lambda_2 \, t_\m{r}}		\quad\to\quad
+	e^{\lambda_1\,t_\m{r}} = -\frac{B}{A}\,e^{\lambda_2\,t_\m{r}} 	\quad\to\quad
+	t_\m{r} = \frac{1}{\lambda_1 - \lambda_2}\,\m{ln}\left(-\frac{B}{A}\right).
+\end{equation*}
+%\begin{align*}
+%	0 &= g_0 \left( -0.59 e^{\lambda_1\,t_\m{r}} + 1.59 e^{\lambda_2\,t_\m{r}} \right) \\
+%&\downarrow\\
+%	0.59 e^{\lambda_1\,t_\m{r}} &= 1.59 e^{\lambda_2\,t_\m{r}} 	\\
+%&\downarrow\\
+%	t_\m{r} &= \frac{1}{\lambda_1 - \lambda_2}\,\m{ln}\left(\frac{1.59}{0.59}\right)
+%\end{align*}
+
+
+This can be further simplified by substitution of $A$ and $B$ from~\eqref{Eq:genSolParams} to
 \begin{equation}
-	h(t) = -\frac{1}{\gamma}\left( \dot{g}(t) + \delta\,g(t)\right)
+	t_\m{r} = \frac{1}{\lambda_1 - \lambda_2}\,\m{ln}\left(\frac{\lambda_1+\delta}{\lambda_2+\delta}\right).
 \end{equation}
 
-text text text
+After substitution for all parameters we get time $t_\m{r}=1.01\,\si{\hour}$. This value corresponds to time when the glucose concentration returns to its original value after glucose ingestion for a healthy individual. Therefore the time $t_\m{r}$ can server as a threshold which indicates whether an individual has diabetes or not. The graph of $g(t)$ is displayed in Fig.~\ref{Fig:boliesTestGlucose}.
+
+As we already know the general solution for $g(t)$, we can easily obtain the solution for $h(t)$ by rewriting of the first equation in~\eqref{eqLinearized} to
 \begin{equation}
-	h(t) = -\frac{1}{\gamma}\left[   A(\lambda_1 + \delta)e^{\lambda_1\,t} + B(\lambda_2 + \delta)e^{\lambda_2\,t}  \right] = 0.211\,g_0 \left(e^{\lambda_1\,t} - e^{\lambda_2\,t} \right)
+	h(t) = -\frac{1}{\gamma}\left( \dot{g}(t) + \delta\,g(t)\right).
 \end{equation}
+
+This gives us
+\begin{equation}
+	h(t) = -\frac{1}{\gamma}\left[   A(\lambda_1 + \delta)e^{\lambda_1\,t} + B(\lambda_2 + \delta)e^{\lambda_2\,t}  \right] = K\,g_0 \left(e^{\lambda_1\,t} - e^{\lambda_2\,t} \right),
+\end{equation}
+where $$K=\frac{(\lambda_1+\delta)(\lambda_2+\delta)}{\gamma\,(\lambda_2-\lambda_1)}.$$
+
+Now we can calculate the time when insulin concentration reaches its maximum. We simply find a local maximum of $h(t)$ by solving equation $\dot{h}(t_\m{m})=0$ in very similar way as we did it for the glucose concentration.
+\begin{equation*}
+	\dot{h}(t_\m{m}) = K\,g_0 \left( \lambda_1\,e^{\lambda_1 \, t} - \lambda_2\,e^{\lambda_2 \, t} \right) = 0		\quad\to\quad
+	e^{\lambda_1\,t_\m{m}} = \frac{\lambda_2}{\lambda_1}\,e^{\lambda_2\,t_\m{m}} 	\quad\to\quad
+	t_\m{m} = \frac{1}{\lambda_1 - \lambda_2}\,\m{ln}\left(\frac{\lambda_2}{\lambda_1}\right).
+\end{equation*}
+
+The time $t_\m{m}$ for above identified parameters is $0.55\,\si{\hour}$. The function h(t) is depicted in Fig.~\ref{Fig:boliesTestInsulin}.
 
 \begin{figure}[h!t!]
 	\begin{center}
@@ -255,7 +288,7 @@ text text text
 		\label{Fig:boliesTestGlucose}
 	}
 	\,
-	\subfigure[Insuline concentration]{
+	\subfigure[Insulin concentration]{
 		\includegraphics[width=\subfigWidth]{figs/boliesTestInsulin}	     
 		\label{Fig:boliesTestInsulin}
 	}
