@@ -244,8 +244,8 @@ Time response of glucose concentration can be easily obtained through substituti
 
 Now we can determine the time $t_\m{r}$ when the glucose concentration returns to its steady-state value. For this purpose we put $g(t)$ from equation~\eqref{Eq:genSol} and then it directly follows
 \begin{equation*}
-	0 = A\,e^{\lambda_1 \, t_\m{r}} + B\,e^{\lambda_2 \, t_\m{r}}		\quad\to\quad
-	e^{\lambda_1\,t_\m{r}} = -\frac{B}{A}\,e^{\lambda_2\,t_\m{r}} 	\quad\to\quad
+	0 = A\,e^{\lambda_1 \, t_\m{r}} + B\,e^{\lambda_2 \, t_\m{r}}		\quad\Rightarrow\quad
+	e^{\lambda_1\,t_\m{r}} = -\frac{B}{A}\,e^{\lambda_2\,t_\m{r}} 	\quad\Rightarrow\quad
 	t_\m{r} = \frac{1}{\lambda_1 - \lambda_2}\,\m{ln}\left(-\frac{B}{A}\right).
 \end{equation*}
 %\begin{align*}
@@ -277,8 +277,8 @@ where $$K=\frac{(\lambda_1+\delta)(\lambda_2+\delta)}{\gamma\,(\lambda_2-\lambda
 
 Now we can calculate the time when insulin concentration reaches its maximum. We simply find a local maximum of $h(t)$ by solving equation $\dot{h}(t_\m{m})=0$ in very similar way as we did it for the glucose concentration.
 \begin{equation*}
-	\dot{h}(t_\m{m}) = K\,g_0 \left( \lambda_1\,e^{\lambda_1 \, t} - \lambda_2\,e^{\lambda_2 \, t} \right) = 0		\quad\to\quad
-	e^{\lambda_1\,t_\m{m}} = \frac{\lambda_2}{\lambda_1}\,e^{\lambda_2\,t_\m{m}} 	\quad\to\quad
+	\dot{h}(t_\m{m}) = K\,g_0 \left( \lambda_1\,e^{\lambda_1 \, t} - \lambda_2\,e^{\lambda_2 \, t} \right) = 0		\quad\Rightarrow\quad
+	e^{\lambda_1\,t_\m{m}} = \frac{\lambda_2}{\lambda_1}\,e^{\lambda_2\,t_\m{m}} 	\quad\Rightarrow\quad
 	t_\m{m} = \frac{1}{\lambda_1 - \lambda_2}\,\m{ln}\left(\frac{\lambda_2}{\lambda_1}\right).
 \end{equation*}
 
