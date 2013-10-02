@@ -170,7 +170,8 @@ $F_4(H,G)$ & rate of tissue utilization of glucose & \si{\gram\per\hour}\\
 We can reduce the linearized model from eq.~\ref{eqLinearized} to a 2\textsuperscript{nd} order by differentiating the first equation and substituting $\dot h$ with the second equation. $h$ is substituted with the expression for $h$ derived from the first equation. We get:
 
 \begin{equation}
-\ddot g+(\alpha+\delta)\dot g+(\beta \gamma+\delta \alpha)g=0,
+	\label{Eq:secondOrderDE}
+	\ddot g+(\alpha+\delta)\dot g+(\beta \gamma+\delta \alpha)g=0,
 \end{equation}
 %where $S(t)$ is a nonhomogeneous term reflecting external glucose input to the bloodstream.  
 
@@ -259,7 +260,7 @@ This can be further simplified by substitution of $A$ and $B$ from~\eqref{Eq:gen
 	t_\m{r} = \frac{1}{\lambda_1 - \lambda_2}\,\m{ln}\left(\frac{\lambda_1+\delta}{\lambda_2+\delta}\right).
 \end{equation}
 
-After substitution for all parameters we get time $t_\m{r}=1.01\,\si{\hour}$. This value corresponds to time when the glucose concentration returns to its original value after glucose ingestion for a healthy individual. Therefore the time $t_\m{r}$ can server as a threshold which indicates whether an individual has diabetes or not. The graph of $g(t)$ is displayed in Fig.~\ref{Fig:boliesTestGlucose}.
+After substitution for all parameters we get time $t_\m{r}=1.01\,\si{\hour}$. This value corresponds to time when the glucose concentration returns to its original value after glucose ingestion for a healthy individual. Therefore the time $t_\m{r}$ can serve as a threshold which indicates whether an individual has diabetes or not. The graph of $g(t)$ is displayed in Fig.~\ref{Fig:boliesTestGlucose}.
 
 As we already know the general solution for $g(t)$, we can easily obtain the solution for $h(t)$ by rewriting of the first equation in~\eqref{eqLinearized} to
 \begin{equation}
@@ -296,13 +297,26 @@ The time $t_\m{m}$ for above identified parameters is $0.55\,\si{\hour}$. The fu
 	\caption{Time responses of glucose and insulin concentration after glucose ingestion}
 \end{figure}
 
-% -----  Ackermann's diabetes test -------
-\subsection{Ackermann's diabetes test}
+\todo[inline]{Napsat podminky pri kterych byl simulovany prubehy v grafech}
 
-predpoklada kmitave reseni
-\todo[inline]{opsat par rovnic ze strany 105/106}
-\todo[inline]{vyresit ten stejny priklad jako vyse}
+% -----  Ackerman's diabetes test -------
+\subsection{Ackerman's diabetes test}
+An alternative approach to test diabetes is so called Ackerman's test~\ref{braun_differential_1983}. The test uses the same linearized model of blood glucose regulatory system as we described earlier in this report by system of equations~\eqref{eqLinearized}. If we neglect all inputs and reduce the system to one equation, we can also describe the same model by equation
+\begin{equation}
+	\label{Eq:AckerSecondOrder}
+	\ddot g+2\sigma\,\dot g+\omega_0^2\,g=0,
+\end{equation}
+where $\nu$ and $\omega_0^2$ are by simple comparison with~\eqref{Eq:secondOrderDE} are $\nu = (\alpha+\delta)/2$ and $\omega_0^2 = \beta\gamma+\alpha\delta$.
 
+The solution of differential equation~\eqref{Eq:AckerSecondOrder} can be under-damped, over-damped and critically-damped depending on the value of the roots of the characteristic equation~\eqref{Eq:charEqn}. Ackerman assumed that the solution is always oscillatory (under-damped) and hence is of the form
+\begin{equation}
+%	g(t) = e^{-\sigma\,t}\left(  C_1\cos \omega t + C_2\sin \omega t    \right),
+	g(t) = C\,e^{-\sigma t}\cos ( \omega t  - \varphi),
+\end{equation}
+where $\omega = \sqrt{\sigma^2-\omega_0^2}$. Finally, if we add the equilibrium value of the glucose concentration $G_0$, we get a function $G(t)$ in time which describes the overall glucose concentration in the blood system.
+\begin{equation}
+	G(t) = G_0 + C\,e^{-\sigma t}\cos ( \omega t  - \varphi)
+\end{equation}
 
 \bibliographystyle{IEEEtran}
 \bibliography{DiabetesBibliography}
