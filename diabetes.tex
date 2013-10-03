@@ -59,7 +59,7 @@ glucose in the bloodstream by absorbing it and converting it to glycogen for sto
 decomposes the insulin. There are other hormones and factors which play a role in the metabolism
 of glucose. Adrenaline, for example increases the amount of glucose in the bloodstream available
 to cells. The concentration of this hormone is, however, difficult to measure precisely.
-In the following text we thus assume insulin as the only significant hormone.
+In the following text we thus consider insulin as the only significant hormone.
 
 If the concentration of insulin in bloodstream is too high, then cells absorb most of the glucose 
 and as a result, there may not be enough for the nerve cells, which may end up by coma or death.
@@ -173,41 +173,56 @@ $F_4(H,G)$ & rate of tissue utilization of glucose & \si{\gram\per\hour}\\
 % ------------------------- Linearized model solution -------------------------
 \section{Linearized model solution}
 
-We can reduce the linearized model from eq.~\ref{eqLinearized} to a 2\textsuperscript{nd} order differential equation by differentiating the first equation and substituting $\dot h$ with the right hand side of the second equation. The $h$ term is then substituted with the expression for $h$ derived from the first equation. We get:
+We can reduce the linearized model from eq.~\ref{eqLinearized} to a 2\textsuperscript{nd} order differential equation by differentiating the first equation and substituting $\dot h$ with the right hand side of the second equation:
 
+\begin{equation*}
+\ddot g=-\gamma \dot g -\delta \alpha g + \delta \beta h.
+\end{equation*}
+
+ The $h$ term is then substituted with the expression for $h$ derived from the first equation:
+ 
+\begin{equation}
+\label{eq:hterm}
+h=\frac{-\gamma g -\dot g}{\delta}
+\end{equation} 
+
+We get:
 \begin{equation}
 	\label{Eq:secondOrderDE}
-	\ddot g+(\alpha+\delta)\dot g+(\beta \gamma+\delta \alpha)g=0.
+	\ddot g+(\gamma+\beta)\dot g+(\beta \gamma+\delta \alpha)g=0.
 \end{equation}
 %where $S(t)$ is a nonhomogeneous term reflecting external glucose input to the bloodstream.  
 
-The solutions are found by solving the characteristic polynomial
+The solutions are found by solving the characteristic polynomial:
 
 \begin{equation}
 	\label{Eq:charEqn}
-	\lambda^2+(\alpha+\delta)\lambda+(\beta\gamma+\delta\alpha)=0,
+	\lambda^2+(\gamma+\beta)\lambda+(\beta\gamma+\delta\alpha)=0,
 \end{equation}
 
 \begin{equation}
 	\label{Eq:rootsOfCharEqn}
-	\lambda_{1,2}=\frac{1}{2}\left(-(\alpha+\delta)\pm \sqrt{(\alpha-\delta)^2-4\beta\gamma}\right).
+	\lambda_{1,2}=\frac{1}{2}\left(-(\gamma+\beta)\pm \sqrt{(\gamma+\beta)^2-4(\beta\gamma+\delta\alpha)}\right).
 \end{equation}
 
-Since both $(\alpha+\delta)$ and $(\beta\gamma+\delta\alpha)$ are positive, the solutions are always stable, going to zero with $t\rightarrow \infty$. If the discriminant is lower than zero then the solutions go to zero periodically, otherwise aperiodically.
+Since both $(\gamma+\beta)$ and $(\beta\gamma+\delta\alpha)$ are positive, the solutions are always stable, going to zero with $t\rightarrow \infty$. If the discriminant is lower than zero then the solutions go to zero periodically, otherwise aperiodically.\\
 
-\subsection*{General solution}
+%\subsection*{General solution}
+
+General solution is in the form:
 \begin{equation}
 	\label{Eq:genSol}
-	g(t) = A\,e^{\lambda_1 \, t} + B\,e^{\lambda_2 \, t}
+	g(t) = A\,e^{\lambda_1 \, t} + B\,e^{\lambda_2 \, t}.
 \end{equation}
-from initial conditions $g(t_0=0) = g_0$ and $\dot{g}(t_0=0) = -\delta \, g_0$
-\todo{Jiri, dopis to nejak}
+
+By specifying initial conditions $g(t_0=0) = g_0$ and $h(t_0=0)=0$ we can derive initial condition for $\dot g(t_0=0)$ by substituting $g_0$ for $g$ in eq.~\ref{eq:hterm}, thus obtaining $\dot g(t_0=0)=-\gamma g_0$.\\
+
+Constants A and B for the specified initial conditions are:
+ 
 \begin{equation*}
 	\label{Eq:genSolParams}
 	A = g_0\,\frac{\delta+\lambda_2}{\lambda_2-\lambda_1}, \qquad B = g_0\,\frac{\delta+\lambda_1}{\lambda_1-\lambda_2}.
 \end{equation*}
-
-\todo[inline]{Pridat obecne reseni}
 
 
 % ------------------------- Testing for diabetes -------------------------
