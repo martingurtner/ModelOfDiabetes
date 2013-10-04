@@ -224,6 +224,32 @@ Constants A and B for the specified initial conditions are:
 	A = g_0\,\frac{\delta+\lambda_2}{\lambda_2-\lambda_1}, \qquad B = g_0\,\frac{\delta+\lambda_1}{\lambda_1-\lambda_2}.
 \end{equation*}
 
+\section{Bellomo's model}
+Bellomo et al. \cite{bellomo} suggest another model of the glucose-insulin system, described by the following equations:
+\begin{equation*}
+\begin{aligned}
+ \frac{\m{d}i}{\m{d}t} &= -K_i\,i + K_g\,(g - g_d) + K_s\,i_r, \\
+ \frac{\m{d}g}{\m{d}t} &= K_h\,g - K_0\,g\,i - K_s\,K_f.
+\end{aligned}
+\end{equation*}
+Where $i$ is the level of insulin and $g$ level of glucose.
+$K_i, K_g, K_s, K_h, K_f$ and also $g_d$ are some constant coefficients.
+(Deatiled description of their meaning can be found in \cite{bellomo}.)
+Finally $i_r$ represents the rate of insulin infusion (or ingestion) and it's a function of $t$.
+The meaning of the term $-K_i\,i$ in the first equation is analogous to the term $-\alpha\,h$ in \eqref{eqLinearized},
+furthemore the term $K_g\,(g - g_d)$ has similar meaning as $\beta\,g$ in \eqref{eqLinearized},
+except that it takes into account the reduction of insulin deliverance, which occurs during hypoglycemia 
+(low level of blood sugar). This is done by substracting the constant $g_d$.
+An infustion of insulin of course increases it's level in bloodstrem, so we add $i_r$ multiplied by a coefficient
+to the change of insulin in time. The constant $K_s\,K_f$ represents some residual processes,
+which is not of big interest for us. The meaning of the terms $K_h\,g - K_0\,g\,i$, on the other hand,
+is more important. Their meaning can be probably better understood if we rewrite it like this:
+\[ K_h\,g - K_0\,g\,i = K_n\,g(1 - \frac{K_0}{K_n}\,i) := K_n\,g(1 - a\,i). \]
+Now we can see, that the the level of glucose in bloodstream can actually be growing, if
+the value of $i$ is sufficiently small.
+This is due to a certain time delay between glucose infusion and insulin release.
+Otherwise, however, both glucose level and insulin levels affect the change of glucose negatively,
+as in the case of equation \eqref{eqLinearized}.
 
 % ------------------------- Testing for diabetes -------------------------
 \section{Testing for diabetes}
