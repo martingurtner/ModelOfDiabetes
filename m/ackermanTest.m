@@ -15,16 +15,22 @@ alpha = fit1.alpha;
 omega = fit1.omega;
 phi = fit1.phi;
 
+omega0 = sqrt(omega^2 + alpha^2)
+T0 = 2*pi/sqrt(omega^2 + alpha^2)
+
 x1_smooth = G0+A*exp(-alpha*t_smooth).*cos(omega*t_smooth-phi);
 
 %% Data 2
-fit1 = fit(t',x2',f, 'startpoint', [80; 200; 1; 1; 1]);
+fit2 = fit(t',x2',f, 'startpoint', [80; 200; 1; 1; 1]);
 
-A = fit1.A;
-G0 = fit1.G0;
-alpha = fit1.alpha;
-omega = fit1.omega;
-phi = fit1.phi;
+A = fit2.A;
+G0 = fit2.G0;
+alpha = fit2.alpha;
+omega = fit2.omega;
+phi = fit2.phi;
+
+omega0 = sqrt(omega^2 + alpha^2)
+T0 = 2*pi/sqrt(omega^2 + alpha^2)
 
 x2_smooth = G0+A*exp(-alpha*t_smooth).*cos(omega*t_smooth-phi);
 

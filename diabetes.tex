@@ -365,24 +365,34 @@ An alternative approach to test diabetes is so called Ackerman's test~\ref{braun
 	\label{Eq:AckerSecondOrder}
 	\ddot g+2\sigma\,\dot g+\omega_0^2\,g=0,
 \end{equation}
-where $\nu$ and $\omega_0^2$ are by simple comparison with~\eqref{Eq:secondOrderDE} are $\nu = (\alpha+\delta)/2$ and $\omega_0^2 = \beta\gamma+\alpha\delta$.
+where $\nu$ and $\omega_0^2$ by simple comparison with~\eqref{Eq:secondOrderDE} are $\nu = (\alpha+\delta)/2$ and $\omega_0^2 = \beta\gamma+\alpha\delta$.
 
 The solution of differential equation~\eqref{Eq:AckerSecondOrder} can be under-damped, over-damped and critically-damped depending on the value of the roots of the characteristic equation~\eqref{Eq:charEqn}. Ackerman assumed that the solution is always oscillatory (under-damped) and hence is of the form
 \begin{equation}
 %	g(t) = e^{-\sigma\,t}\left(  C_1\cos \omega t + C_2\sin \omega t    \right),
 	g(t) = C\,e^{-\sigma t}\cos ( \omega t  - \varphi),
 \end{equation}
-where $\omega = \sqrt{\sigma^2-\omega_0^2}$. Finally, if we add the equilibrium value of the glucose concentration $G_0$, we get a function $G(t)$ in time which describes the overall glucose concentration in the blood system.
+where $\omega = \sqrt{\omega_0^2- \sigma^2}$. Finally, if we add the equilibrium value of the glucose concentration $G_0$, we get a function $G(t)$ in time which describes the overall glucose concentration in the blood system:
 \begin{equation}
+	\label{Eq:GT}
 	G(t) = G_0 + C\,e^{-\sigma t}\cos ( \omega t  - \varphi)
 \end{equation}
 
-\begin{table}[!h]
+Function $G(t)$ has five parameters to identify. Two of them has quite straightforward interpretation which now will be given. Parameter $\sigma$ directly determines the time after which the system will be back in its equilibrium after some perturbations. Parameter $\omega$ describes the frequency of the oscillations in the response. One could expect that parameter $\alpha$ is better for classification if someone has diabetes or not. Nevertheless, it appears that it is difficult to identify $\alpha$ correctly, whereas $\omega_0$ doesn't suffer from this problem. Parameter $\omega_0$ can be further recalculated to the corresponding natural period $T_0=2\pi/\omega_0$. Ackerman observed that people whos time response of the glucose concentration has smaller time 
+$T_0$ than 4 hours are healthy.
+
+\paragraph{Example}
+Table~\ref{tabAckerData} contains data from measurements of the glucose concentration collected during standard Glucose Tolerance Test for two persons. \todo{vysvetlit}The data for each of them were fitted with the function $G(t)$ from equation~\eqref{Eq:GT} by Leas Squares Method in Matlab. The identified parameters are summarized in Table~\ref{tabAckerParams} and the identified curves are depicted in Figure~\ref{Fig:ackerResult}. From the natural periods in Table~\ref{tabAckerParams} one can clearly see that the fits person is healthy and the other one suffers from diabetes.
+
+
+\begin{figure}[!h]
+	\begin{minipage}[t]{0.48\textwidth}
+		\centering
 \renewcommand{\arraystretch}{1.3}  
 \centering
 \begin{tabular}{lll}
 \toprule
-\textbf{Time}  & \textbf{Glucose con. 1} & \textbf{Glucose con. 2}\\
+\textbf{Time}  & \textbf{Data 1} & \textbf{Data 2}\\
 \m{[hour]} & \m{[mg/dl]} & \m{[mg/dl]}\\
 \midrule
 0       &75      &100 \\
@@ -402,9 +412,35 @@ where $\omega = \sqrt{\sigma^2-\omega_0^2}$. Finally, if we add the equilibrium 
 5       &80      &90 \\
 \bottomrule
 \end{tabular}
-\caption{texttext}
+\caption{Data collected in standard GTT for two persons.}
 \label{tabAckerData}
-\end{table}
+	\end{minipage}
+	\hspace{0.04\textwidth}
+	\begin{minipage}[t]{0.48\textwidth}
+		\centering
+\renewcommand{\arraystretch}{1.3}  
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Parameter}  & \textbf{Data 1} & \textbf{Data 2}\\
+\midrule
+$A$       			&175.8      	&222.7 \\
+\rowcolor{Gray}
+$G_0$     			&83.9    	&102.9 \\
+$\alpha$   			&0.913     	&0.5582 \\
+\rowcolor{Gray}	
+$\omega$       		&1.87     	&1.12 \\
+$\varphi$     			&1.633     	&1.591 \\
+\rowcolor{Gray}
+$\omega_0$       		&2.086      	&1.251 \\
+$T_0$     			&3.019     	&5.023 \\
+\bottomrule
+\end{tabular}
+\vspace{31pt}
+\caption{Identified parameters of the time responses of the glucose concentration from the example.}
+\label{tabAckerParams}
+	\end{minipage}
+\end{figure}
 
 \begin{figure}[h!t!]
    \centering
