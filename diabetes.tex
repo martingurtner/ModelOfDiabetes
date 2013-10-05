@@ -175,7 +175,7 @@ $F_4(H,G)$ & rate of tissue utilization of glucose & \si{\gram\per\hour}\\
 % ------------------------- Linearized model solution -------------------------
 \section{Linearized model solution}
 
-We can reduce the linearized model from eq.~\ref{eqLinearized} to a 2\textsuperscript{nd} order differential equation by differentiating the first equation and substituting $\dot h$ with the right hand side of the second equation:
+We can reduce the linearised model from eq.~\ref{eqLinearized} to a 2\textsuperscript{nd} order differential equation by differentiating the first equation and substituting $\dot h$ with the right hand side of the second equation:
 
 \begin{equation*}
 \ddot g=-\gamma \dot g -\delta \alpha g + \delta \beta h.
@@ -227,8 +227,7 @@ Constants A and B for the specified initial conditions are:
 \end{equation*}
 
 \section{Bellomo's model}
-Bellomo et al. \cite{bellomo} suggest another model of the glucose-insulin system, described by the following equations
-(We use notation from the original paper):
+Bellomo et al. \cite{bellomo} suggest a more specific model of the glucose-insulin system, described by the following equations:
 \begin{equation}
 \label{Eq:bellomo}
 \begin{aligned}
@@ -238,20 +237,20 @@ Bellomo et al. \cite{bellomo} suggest another model of the glucose-insulin syste
 \end{equation}
 Where $i$ is the level of insulin and $g$ level of glucose.
 $K_i, K_g, K_s, K_h, K_f$ and also $g_d$ are some constant coefficients.
-(Deatiled description of their meaning can be found in \cite{bellomo}.)
+Detailed description of their meaning can be found in \cite{bellomo}.
 Finally $i_r$ represents the rate of insulin infusion (or ingestion) and it's a function of $t$.
-Bellomo's model is a special case of the general Bolie's model.
+We use notation from the original paper, but Bellomo's model is a special case of the general Bolie's model.
 In the underbraces, we can see the correspondence between parts of the equations \eqref{Eq:bellomo} to the Bolie's model \eqref{eqbolie}.
 
 The meaning of the term $-K_i\,i$ in the first equation is analogous to the term $-\alpha\,h$ in \eqref{eqLinearized},
-furthemore the term $K_g\,(g - g_d)$ has similar meaning as $\beta\,g$ in \eqref{eqLinearized},
+furthermore the term $K_g\,(g - g_d)$ has similar meaning as $\beta\,g$ in \eqref{eqLinearized},
 except that it takes into account the reduction of insulin deliverance, which occurs during hypoglycemia 
 (low level of blood sugar). This is done by substracting the constant $g_d$.
-An infustion of insulin of course increases it's level in bloodstrem, so we add $i_r$ multiplied by a coefficient
+An infusion of insulin of course increases it's level in bloodstream, so we add $i_r$ multiplied by a coefficient
 to the change of insulin in time. The constant $K_s\,K_f$ represents some residual processes in the body,
-which is not of big interest for us. The terms $K_h\,g - K_0\,g\,i$, on the other hand,
-is more significant. Their meaning can be probably better understood if we rewrite it like this:
-\[ K_h\,g - K_0\,g\,i = K_n\,g(1 - \frac{K_0}{K_n}\,i) := K_n\,g(1 - a\,i). \]
+which are not of big interest for us. The terms $K_h\,g - K_0\,g\,i$, on the other hand,
+are more significant. Their meaning can be probably better understood if we rewrite it like this:
+\[ K_h\,g - K_0\,g\,i = K_n\,g\left(1 - \frac{K_0}{K_n}\,i\right) := K_n\,g(1 - a\,i). \]
 Now we can see, that the the level of glucose in bloodstream can actually be growing, if
 the value of $i$ is sufficiently small.
 This is due to a certain time delay between glucose infusion and insulin release.
