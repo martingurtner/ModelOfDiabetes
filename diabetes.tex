@@ -43,7 +43,7 @@ bottom=2cm, bindingoffset=1cm]{geometry}
 The goal of this project is to get familiar with mathematical description of the nutrient utilization in the bloodstream of the human body. This problem can be studied as a simplified glucose-insulin interaction.
 %The goal of this project is to get familiar with simplified mathematical description of the glucose-insulin interaction in the bloodstream of the human body. 
 A short introduction to the underlying biological background is followed by a detailed mathematical derivation of V. Bolie's model~\cite{bolie1961coefficients} and its discussion.
-Another, less general, model of insulin-glucose interaction by Bellomo et al. is briefly examined.
+Subsequently another, less general, model of insulin-glucose interaction by Bellomo et al. is briefly examined.
 This project report is concluded by a review of the Ackerman's diabetes test. 
 
 \section{Biological background}
@@ -71,7 +71,7 @@ create insufficient amount of insulin.
 
 
 % ------------------------- Bolie's diabetes model -------------------------
-\section{Bolie's diabetes model}
+\section{Bolie's glucose-insulin interaction model}
 
 Bolie's diabetes model is based on the following general assumptions, taken from~\cite{fulford_modelling_1997}:
 
@@ -175,28 +175,28 @@ $F_4(H,G)$ & rate of tissue utilization of glucose & \si{\gram\per\hour}\\
 % ------------------------- Linearized model solution -------------------------
 \section{Linearized model solution}
 
-We can reduce the linearised model from eq.~\ref{eqLinearized} to a 2\textsuperscript{nd} order differential equation by differentiating the first equation and substituting $\dot h$ with the right hand side of the second equation:
-
+We can reduce the linearised model from eq.~\ref{eqLinearized} to a 2\textsuperscript{nd} order differential equation by differentiating the second equation and substituting $\dot h$ with the right hand side of the first equation:
+%
 \begin{equation*}
 \ddot g=-\gamma \dot g -\delta \alpha g + \delta \beta h.
 \end{equation*}
-
- The $h$ term is then substituted with the expression for $h$ derived from the first equation:
- 
+%
+ The $h$ term is then substituted with the expression for $h$ derived from the second equation:
+% 
 \begin{equation}
 \label{eq:hterm}
-h=\frac{-\gamma g -\dot g}{\delta}
+h = -\frac{1}{\gamma}\left( \dot{g} + \delta\,g\right).
 \end{equation} 
-
+%
 We get:
 \begin{equation}
 	\label{Eq:secondOrderDE}
 	\ddot g+(\gamma+\beta)\dot g+(\beta \gamma+\delta \alpha)g=0.
 \end{equation}
 %where $S(t)$ is a nonhomogeneous term reflecting external glucose input to the bloodstream.  
-
+%
 The solutions are found by solving the characteristic polynomial:
-
+%
 \begin{equation}
 	\label{Eq:charEqn}
 	\lambda^2+(\gamma+\beta)\lambda+(\beta\gamma+\delta\alpha)=0,
@@ -206,21 +206,20 @@ The solutions are found by solving the characteristic polynomial:
 	\label{Eq:rootsOfCharEqn}
 	\lambda_{1,2}=\frac{1}{2}\left(-(\gamma+\beta)\pm \sqrt{(\gamma+\beta)^2-4(\beta\gamma+\delta\alpha)}\right).
 \end{equation}
-
+%
 Since both $(\gamma+\beta)$ and $(\beta\gamma+\delta\alpha)$ are positive, the solutions are always stable, going to zero with $t\rightarrow \infty$. If the discriminant is lower than zero then the solutions go to zero periodically, otherwise aperiodically.\\
-
-%\subsection*{General solution}
-
+%
+%
 General solution is in the form:
 \begin{equation}
 	\label{Eq:genSol}
 	g(t) = A\,e^{\lambda_1 \, t} + B\,e^{\lambda_2 \, t}.
 \end{equation}
-
-By specifying initial conditions $g(t_0=0) = g_0$ and $h(t_0=0)=0$ we can derive initial condition for $\dot g(t_0=0)$ by substituting $g_0$ for $g$ in eq.~\ref{eq:hterm}, thus obtaining $\dot g(t_0=0)=-\gamma g_0$.\\
-
+%
+By specifying initial conditions $g(t_0=0) = g_0$ and $h(t_0=0)=0$ we can derive initial condition for $\dot g(t_0=0)$ by substituting $g_0$ for $g$ in eq.~\ref{eq:hterm}, thus obtaining $\dot g(t_0=0)=-\delta g_0$.\\
+%
 Constants A and B for the specified initial conditions are:
- 
+%
 \begin{equation*}
 	\label{Eq:genSolParams}
 	A = g_0\,\frac{\delta+\lambda_2}{\lambda_2-\lambda_1}, \qquad B = g_0\,\frac{\delta+\lambda_1}{\lambda_1-\lambda_2}.
@@ -263,6 +262,8 @@ as in the case of equation \eqref{eqLinearized}.
 % ^ Pravděpodobně bullshit, ale nechtěl jsem to mazat.
 
 % ------------------------- Testing for diabetes -------------------------
+\todo[inline]{mozna by stalo za zvazeni zmenit strukturu na muj bolie, martinuv bolie, bellomo, ackermann, vlastne stejne jak uz nekdo doplnil do uvodu}
+
 \section{Testing for diabetes}
 Now we will make use of the diabetes model. Probably the main purpose of developing such a model is to find a test which recognizes whereas a patient has a diabetes or not. We will discuss two tests developed in early sixties, where each of them has a very similar criterion but uses the above derived model in slightly different way.
 % -----  Bolie's test -------

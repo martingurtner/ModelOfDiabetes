@@ -35,7 +35,118 @@
 \end{frame}
 
 % Jiriho slajdy ----------
-\begin{frame}{ }
+\begin{frame}{Bolie's glucose-insulin interaction model (1)}
+
+\begin{enumerate}
+	\item
+	Insulin is being degraded by the liver.	
+	\item
+	A rise in the concentration of glucose in the 			bloodstream results in increased production of 			insulin by the pancreas.
+\end{enumerate}
+
+\begin{align*}
+V\frac{\m{d} H}{\m{d} t}&=-F_1(H)&+&F_2(G)&+ &\text{insulin injection rate}\\
+\Bigg[\text{liter}\frac{\text{units}}{\text{liters} \times\text{hours}}&=-\frac{\text{units}}{\text{hour}}&+&\frac{\text{units}}{\text{hour}}&+&\frac{\text{units}}{\text{hour}}\Bigg]
+\end{align*}
+
+
+
+\end{frame}
+
+\begin{frame}{Bolie's glucose-insulin interaction model (2)}
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+	\item
+	With increasing concentration of insulin, the glucose is more easily absorbed by the cells, i.e. it leaves the bloodstream more quickly.
+	\item
+	A rise in glucose concentration in the bloodstream results in increased glucose absorption by the liver.
+\end{enumerate}
+
+\begin{align*}
+V\frac{\m{d} G}{\m{d} t}&=-F_3(H,G)&-&F_4(H,G) &+&\text{glucose injection rate}.\\
+\Bigg[\text{liter}\frac{\text{grams}}{\text{grams} \times\text{hours}}&=-\frac{\text{grams}}{\text{hour}}&-&\frac{\text{grams}}{\text{hour}}&+&\frac{\text{grams}}{\text{hour}}\Bigg]
+\end{align*}
+
+
+\end{frame}
+
+\begin{frame}{Bolie's model for small changes around equilibrium}
+\centering{Equilibrium of insulin and glucose in the bloodstream\\ $(H_0$, $G_0)=(\mathbf{e}_0)$} 
+
+\begin{equation*}
+\begin{aligned}
+V\frac{\m{d}h}{\m{d}t}&=-F_1(H_0+h)+F_2(G_0+g)+ \text{insulin injection rate},\\
+V\frac{\m{d}g}{\m{d}t}&=-F_3(H_0+h,G_0+g)-F_4(H_0+h,G_0+g)+ \text{g. injection rate}.
+\end{aligned}
+\end{equation*}
+\end{frame}
+
+\begin{frame}{Linearization of Bolie's model}
+
+\centering{Equilibrium of insulin and glucose in the bloodstream\\ $(H_0$, $G_0)=(\mathbf{e}_0)$} 
+
+\begin{align*}
+\frac{\m{d}h}{\m{d}t}&=-\underbrace{%
+		\frac{1}{V}\frac{\p F_1(H_0)}{\p H}}_{\alpha}h+%
+%
+\underbrace{%
+		\frac{1}{V}\frac{\p F_2(G_0)}{\p G}}_{\beta}g+\mathcal{O}(2), \\%		
+%
+\frac{\m{d}g}{\m{d}t}&=%
+%
+-\underbrace{%
+\left(\frac{1}{V}\frac{\p F_3(\mathbf{e}_0)}{\p H}+\frac{\p F_4(\mathbf{e}_0)}{\p H}\right)}_{\gamma}h%
+-\underbrace{%
+\left(\frac{1}{V}\frac{\p F_3(\mathbf{e}_0)}{\p G}+\frac{\p F_4(\mathbf{e}_0)}{\p G}\right)}_{\delta} g+\mathcal{O}(2).
+\end{align*}
+
+
+\end{frame}
+
+\begin{frame}{Linearized Bolie's model}
+
+System of 1\textsuperscript{st} order equations
+\begin{equation*}
+\begin{aligned}
+\frac{\m{d}h}{\m{d}t}&=-\alpha h + \beta g,\\
+\frac{\m{d}g}{\m{d}t}&=-\gamma h - \delta g.\\
+\end{aligned}
+\end{equation*}
+
+Reduced 2\textsuperscript{nd} order equation
+\begin{equation*}
+	\ddot g+(\gamma+\beta)\dot g+(\beta \gamma+\delta \alpha)g=0.
+\end{equation*}
+
+Eigenvalues and general solution
+\begin{equation*}
+	\lambda_{1,2}=\frac{1}{2}\left(-(\gamma+\beta)\pm \sqrt{(\gamma+\beta)^2-4(\beta\gamma+\delta\alpha)}\right).
+\end{equation*}
+
+\begin{equation*}
+	g(t) = A\,e^{\lambda_1 \, t} + B\,e^{\lambda_2 \, t}.
+\end{equation*}
+
+\end{frame}
+
+\begin{frame}{Initial conditions response of the Bolie's model}
+\begin{equation*}
+	\ddot g+(\gamma+\beta)\dot g+(\beta \gamma+\delta \alpha)g=0.
+\end{equation*}\\
+\vspace{1cm}
+What happens according to the model when a patient gets a dose of glucose?\\
+
+\centering{$g(t_0=0) = g_0\,$ and $\,h(t_0=0)=0$}
+
+\begin{equation*}
+\dot g=-\gamma h - \delta g \quad \Rightarrow \quad h = -\frac{1}{\gamma}\left( \dot{g} + \delta\,g \right) \quad \Rightarrow  \quad \dot g(t_0=0)=-\delta g_0
+\end{equation*}
+
+\begin{equation*}	
+	A = g_0\,\frac{\delta+\lambda_2}{\lambda_2-\lambda_1}, \qquad B = g_0\,\frac{\delta+\lambda_1}{\lambda_1-\lambda_2}.
+\end{equation*}
+
 
 \end{frame}
 
