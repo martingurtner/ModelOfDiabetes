@@ -268,7 +268,7 @@ as in the case of equation \eqref{eqLinearized}.
 Now we will make use of the diabetes model. Probably the main purpose of developing such a model is to find a test which recognizes whereas a patient has a diabetes or not. We will discuss two tests developed in early sixties, where each of them has a very similar criterion but uses the above derived model in slightly different way.
 % -----  Bolie's test -------
 \subsection{Bolie's test}
-Bolie~\cite{bolie1961coefficients} identified all parameters of the model~\eqref{eqLinearized} for a healthy person via three methods. Two of them were based on measurements of changing glucose concentration of rabbits and dogs and the identified parameters were then extrapolated to humans. The third method utilized data from standard insulin and glucose tolerance tests. He assumed that the response of glucose concentration is critically damped. Then he identified all parameters of the analytical response from measured data and recalculated them to parameters $\alpha$, $\beta$, $\gamma$ and $\delta$. The averaged parameters obtained by all three methods are summarized in Table~\ref{tabIdentParam}.
+Bolie~\cite{bolie1961coefficients} identified all parameters of the model described by equations~\eqref{eqLinearized} for a healthy person via three methods. Two of them were based on measurements of changing glucose concentration of rabbits and dogs. The identified identified parameters were then extrapolated to humans. The third method utilized data from standard Glucose Tolerance Tests (GTT). He assumed that the response of glucose concentration is critically damped. Then he identified all parameters of the analytical response from measured data and recalculated them to parameters $\alpha$, $\beta$, $\gamma$ and $\delta$. The averaged parameters obtained by all three methods are summarized in Table~\ref{tabIdentParam}.
 
 \begin{table}[!h]
 \renewcommand{\arraystretch}{1.3}  
@@ -299,7 +299,7 @@ Time response of glucose concentration can be easily obtained through substituti
 	g(t) = g_0 \left( -0.59 e^{\lambda_1\,t} + 1.59 e^{\lambda_2\,t} \right)
 \end{equation}
 
-Now we can determine the time $t_\m{r}$ when the glucose concentration returns to its steady-state value. For this purpose we put $g(t)$ from equation~\eqref{Eq:genSol} and then it directly follows
+Now we can determine the time $t_\m{r}$ when the glucose concentration returns to its steady-state value. For this purpose we put $g(t)$ from equation~\eqref{Eq:genSol} equal to zero and then it directly follows
 \begin{equation*}
 	0 = A\,e^{\lambda_1 \, t_\m{r}} + B\,e^{\lambda_2 \, t_\m{r}}		\quad\Rightarrow\quad
 	e^{\lambda_1\,t_\m{r}} = -\frac{B}{A}\,e^{\lambda_2\,t_\m{r}} 	\quad\Rightarrow\quad
@@ -319,7 +319,7 @@ This can be further simplified by substitution of $A$ and $B$ from~\eqref{Eq:gen
 	t_\m{r} = \frac{1}{\lambda_1 - \lambda_2}\,\m{ln}\left(\frac{\lambda_1+\delta}{\lambda_2+\delta}\right).
 \end{equation}
 
-After substitution for all parameters we get time $t_\m{r}=1.01\,\si{\hour}$. This value corresponds to time when the glucose concentration returns to its original value after glucose ingestion for a healthy individual. Therefore the time $t_\m{r}$ can serve as a threshold which indicates whether an individual has diabetes or not. The graph of $g(t)$ is displayed in Fig.~\ref{Fig:boliesTestGlucose}.
+After substitution of all parameters we get time $t_\m{r}=1.01\,\si{\hour}$. This value corresponds to time when the glucose concentration returns to its original value after a glucose ingestion (for a healthy individual). Therefore the time $t_\m{r}$ can serve as a threshold which indicates whether an individual has diabetes or not. The graph of $g(t)$ is displayed in Fig.~\ref{Fig:boliesTestGlucose}.
 
 As we already know the general solution for $g(t)$, we can easily obtain the solution for $h(t)$ by rewriting of the first equation in~\eqref{eqLinearized} to
 \begin{equation}
@@ -332,14 +332,14 @@ This gives us
 \end{equation}
 where $$K=\frac{(\lambda_1+\delta)(\lambda_2+\delta)}{\gamma\,(\lambda_2-\lambda_1)}.$$
 
-Now we can calculate the time when insulin concentration reaches its maximum. We simply find a local maximum of $h(t)$ by solving equation $\dot{h}(t_\m{m})=0$ in very similar way as we did it for the glucose concentration.
+Now we can determine the time when the insulin concentration reaches its maximum. We simply find a local maximum of $h(t)$ by solving equation $\dot{h}(t_\m{m})=0$ in very similar way as we did it for the glucose concentration.
 \begin{equation*}
 	\dot{h}(t_\m{m}) = K\,g_0 \left( \lambda_1\,e^{\lambda_1 \, t} - \lambda_2\,e^{\lambda_2 \, t} \right) = 0		\quad\Rightarrow\quad
 	e^{\lambda_1\,t_\m{m}} = \frac{\lambda_2}{\lambda_1}\,e^{\lambda_2\,t_\m{m}} 	\quad\Rightarrow\quad
 	t_\m{m} = \frac{1}{\lambda_1 - \lambda_2}\,\m{ln}\left(\frac{\lambda_2}{\lambda_1}\right).
 \end{equation*}
 
-The time $t_\m{m}$ for above identified parameters is $0.55\,\si{\hour}$. The function h(t) is depicted in Fig.~\ref{Fig:boliesTestInsulin}.
+The time $t_\m{m}$ for the above identified parameters is $0.55\,\si{\hour}$. The function h(t) is depicted in Fig.~\ref{Fig:boliesTestInsulin}.
 
 \begin{figure}[h!t!]
 	\begin{center}
@@ -353,14 +353,12 @@ The time $t_\m{m}$ for above identified parameters is $0.55\,\si{\hour}$. The fu
 		\label{Fig:boliesTestInsulin}
 	}
 	\end{center}
-	\caption{Time responses of glucose and insulin concentration after glucose ingestion}
+	\caption{Time responses of glucose and insulin concentration after glucose ingestion ($g_0 = \SI{1}{\gram\per\liter}$)}
 \end{figure}
-
-\todo[inline]{Napsat podminky pri kterych byl simulovany prubehy v grafech}
 
 % -----  Ackerman's diabetes test -------
 \subsection{Ackerman's diabetes test}
-An alternative approach to test diabetes is so called Ackerman's test~\ref{braun_differential_1983}. The test uses the same linearized model of blood glucose regulatory system as we described earlier in this report by system of equations~\eqref{eqLinearized}. If we neglect all inputs and reduce the system to one equation, we can also describe the same model by equation
+An alternative approach to test diabetes is so called Ackerman's test~\cite{braun_differential_1983}. The test uses the same linearized model of blood glucose regulatory system as we described earlier in this report by system of equations~\eqref{eqLinearized}. If we neglect all inputs and reduce the system to one equation, we can also describe the same model by equation
 \begin{equation}
 	\label{Eq:AckerSecondOrder}
 	\ddot g+2\sigma\,\dot g+\omega_0^2\,g=0,
@@ -378,12 +376,11 @@ where $\omega = \sqrt{\omega_0^2- \sigma^2}$. Finally, if we add the equilibrium
 	G(t) = G_0 + C\,e^{-\sigma t}\cos ( \omega t  - \varphi)
 \end{equation}
 
-Function $G(t)$ has five parameters to identify. Two of them has quite straightforward interpretation which now will be given. Parameter $\sigma$ directly determines the time after which the system will be back in its equilibrium after some perturbations. Parameter $\omega$ describes the frequency of the oscillations in the response. One could expect that parameter $\alpha$ is better for classification if someone has diabetes or not. Nevertheless, it appears that it is difficult to identify $\alpha$ correctly, whereas $\omega_0$ doesn't suffer from this problem. Parameter $\omega_0$ can be further recalculated to the corresponding natural period $T_0=2\pi/\omega_0$. Ackerman observed that people whos time response of the glucose concentration has smaller time 
-$T_0$ than 4 hours are healthy.
+Function $G(t)$ has five parameters to identify. Two of them has quite straightforward interpretation which now will be given. Parameter $\sigma$ directly determines the time after which the system will be back in its equilibrium after some perturbations. Parameter $\omega$ describes the frequency of the oscillations in the response. One could expect that parameter $\alpha$ is better for classification if someone has diabetes or not. Nevertheless, it appears that it is difficult to identify $\alpha$ correctly, whereas $\omega_0$ doesn't suffer from this problem. Parameter $\omega_0$ can be further recalculated to the corresponding natural period $T_0=2\pi/\omega_0$. Ackerman observed that people, whose time response of the glucose concentration has smaller time 
+$T_0$ than 4 hours, are healthy.
 
 \paragraph{Example}
-Table~\ref{tabAckerData} contains data from measurements of the glucose concentration collected during standard Glucose Tolerance Test for two persons. \todo{vysvetlit}The data for each of them were fitted with the function $G(t)$ from equation~\eqref{Eq:GT} by Leas Squares Method in Matlab. The identified parameters are summarized in Table~\ref{tabAckerParams} and the identified curves are depicted in Figure~\ref{Fig:ackerResult}. From the natural periods in Table~\ref{tabAckerParams} one can clearly see that the fits person is healthy and the other one suffers from diabetes.
-
+Table~\ref{tabAckerData} contains data from measurements of the glucose concentration collected during standard Glucose Tolerance Test for two persons~\cite{mahaffy}. The data for each of them were fitted with the function $G(t)$ from equation~\eqref{Eq:GT} by Leas Squares Method in Matlab. The identified parameters are summarized in Table~\ref{tabAckerParams} and the identified curves are depicted in Figure~\ref{Fig:ackerResult}. From the natural periods in Table~\ref{tabAckerParams} one can clearly see that the first person is healthy and the other one suffers from diabetes.
 
 \begin{figure}[!h]
 	\begin{minipage}[t]{0.48\textwidth}
@@ -446,7 +443,7 @@ $T_0$     			&3.019     	&5.023 \\
    \centering
    \includegraphics[width=\figWidth]{figs/ackermanTest1}
 	\vspace{-5pt}
-   \caption{textetx}
+   \caption{Comparison of the measured glucose concentration with the identified model response.}
    \label{Fig:ackerResult}
 \end{figure}
 
