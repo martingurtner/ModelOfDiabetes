@@ -1,0 +1,76 @@
+%\documentclass[14pt]{article}
+\documentclass{article}
+%\usepackage{extsizes}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[a4paper, inner=1.5cm, outer=2.5cm, top=2cm,
+bottom=2cm, bindingoffset=1cm]{geometry}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\graphicspath{{img/}}  
+\usepackage[section]{placeins}
+\usepackage{afterpage}
+\usepackage{titling}
+\usepackage{siunitx}
+\usepackage{epstopdf}
+\usepackage{tikz}
+\usepackage{bondgraph}
+%\usepackage{cite}
+\usepackage{booktabs}
+\usepackage{color, colortbl}
+\definecolor{Gray}{gray}{0.95}
+
+
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}}
+\providecommand{\m}[1]{\ensuremath{\mathrm{#1}}}
+\providecommand{\p}[1]{\ensuremath{\partial #1}}
+
+\newcommand{\figWidth}{0.5\textwidth}
+\newcommand{\subfigWidth}{0.45\textwidth}
+
+\usepackage{todonotes}
+\usetikzlibrary{shapes,arrows,decorations.markings}
+
+\begin{document}
+ \begin{center}
+   \Large \textbf{Models for detection of diabetes}
+ \end{center}
+\emph{Assumptions about the system:}
+\begin{enumerate}
+	\item
+	Insulin is being degraded by the liver.	
+	\item
+	A rise in the concentration of glucose in the bloodstream results in increased production of insulin by the pancreas.
+	\item
+	With increasing concentration of insulin, the glucose is more easily absorbed by the cells, i.e. it leaves the bloodstream more quickly.
+	\item
+	A rise in glucose concentration in the bloodstream results in increased glucose absorption by the liver.
+
+\end{enumerate}
+\emph{Bollie's model of glucose-insulin system, general form:}
+\begin{equation*}
+\label{eqbolieEquilibrium}
+\begin{aligned}
+V\frac{\m{d}h}{\m{d}t}&=-F_1(H_0+h)+F_2(G_0+g)+ x,\\
+V\frac{\m{d}g}{\m{d}t}&=-F_3(H_0+h,G_0+g)-F_4(H_0+h,G_0+g)+ y.
+\end{aligned}
+\end{equation*}
+\emph{Linearized form:}
+\begin{equation*}
+\label{eqLinearized}
+\begin{aligned}
+\frac{\m{d}h}{\m{d}t}&=-\alpha h + \beta g,\\
+\frac{\m{d}g}{\m{d}t}&=-\gamma h - \delta g.\\
+\end{aligned}
+\end{equation*}
+\emph{Bellomo's model:}
+\begin{equation*}
+\label{Eq:bellomo}
+\begin{aligned}
+ \frac{\m{d}i}{\m{d}t} &= -\underbrace{K_{\mathrm{i}}\,i}_{F_1} + \underbrace{K_{\mathrm{g}}\,(g - g_{\mathrm{d}})}_{F_2} + \underbrace{K_{\mathrm{s}}\,i_{\mathrm{r}}}_{x}, \\
+ \frac{\m{d}g}{\m{d}t} &= \underbrace{K_{\mathrm{h}}\,g - K_0\,g\,i - K_{\mathrm{s}}\,K_{\mathrm{f}}}_{-F_3-F_4} + \underbrace{0}_{y}.
+\end{aligned}
+\end{equation*}
+\emph{Overall glucose concentration in bloodstream:}
+\[G(t) = G_0 + C\,e^{-\sigma t}\cos ( \omega t  - \varphi) \]
+\end{document}
