@@ -17,6 +17,7 @@ bottom=2cm, bindingoffset=1cm]{geometry}
 \usepackage{bondgraph}
 %\usepackage{cite}
 \usepackage{booktabs}
+\usepackage{caption}
 \usepackage{color, colortbl}
 \definecolor{Gray}{gray}{0.95}
 
@@ -32,7 +33,7 @@ bottom=2cm, bindingoffset=1cm]{geometry}
 \usetikzlibrary{shapes,arrows,decorations.markings}
 
 \begin{document}
-\title{Models for detection of diabetes}
+\title{Insulin-glucose interaction models}
 \author{J\'achym Barv\'inek, Ji\v r\'i Figura, Martin Gurtner}
 
 \maketitle
@@ -44,7 +45,9 @@ The goal of this project is to get familiar with mathematical description of the
 %The goal of this project is to get familiar with simplified mathematical description of the glucose-insulin interaction in the bloodstream of the human body. 
 A short introduction to the underlying biological background is followed by a detailed mathematical derivation of V. Bolie's model~\cite{bolie1961coefficients} and its discussion.
 Subsequently another, less general, model of insulin-glucose interaction by Bellomo et al. is briefly examined.
-This project report is concluded by a review of the Ackerman's diabetes test. 
+Before concluding with a review of the Ackerman's diabetes test, the Bolie's model with parameters identified for healthy human is elaborated. 
+
+%This project report is concluded by a review  the Ackerman's diabetes test. 
 
 \section{Biological background}
 
@@ -138,8 +141,8 @@ All of the constants $\alpha$, $\beta$, $\gamma$, $\delta$ are positive. Let's c
 On the other hand, if we put $h=0$ we can see that increase in $g$ leads to increase in $h$, which is in accordance with the second assumption.
 Assumptions 3 and 4 say that rise in each of the variables results in   decrease of glucose concentration and the negative signs at both terms in the second equation reflect that.   
 
-\begin{table}[t]
-\renewcommand{\arraystretch}{1.3}  
+\begin{table}[h]
+\renewcommand{\arraystretch}{1.1}  
 \centering
 \begin{tabular}{lll}
 \toprule
@@ -262,7 +265,6 @@ as in the case of equation \eqref{eqLinearized}.
 % ^ Pravděpodobně bullshit, ale nechtěl jsem to mazat.
 
 % ------------------------- Testing for diabetes -------------------------
-\todo[inline]{mozna by stalo za zvazeni zmenit strukturu na muj bolie, martinuv bolie, bellomo, ackermann, vlastne stejne jak uz nekdo doplnil do uvodu}
 
 \section{Testing for diabetes}
 Now we will make use of the diabetes model. Probably the main purpose of developing such a model is to find a test which recognizes whereas a patient has a diabetes or not. We will discuss two tests developed in early sixties, where each of them has a very similar criterion but uses the above derived model in slightly different way.
@@ -271,7 +273,7 @@ Now we will make use of the diabetes model. Probably the main purpose of develop
 Bolie~\cite{bolie1961coefficients} identified all parameters of the model described by equations~\eqref{eqLinearized} for a healthy person via three methods. Two of them were based on measurements of changing glucose concentration of rabbits and dogs. The identified identified parameters were then extrapolated to humans. The third method utilized data from standard Glucose Tolerance Tests (GTT). He assumed that the response of glucose concentration is critically damped. Then he identified all parameters of the analytical response from measured data and recalculated them to parameters $\alpha$, $\beta$, $\gamma$ and $\delta$. The averaged parameters obtained by all three methods are summarized in Table~\ref{tabIdentParam}.
 
 \begin{table}[!h]
-\renewcommand{\arraystretch}{1.3}  
+\renewcommand{\arraystretch}{1.1}  
 \centering
 \begin{tabular}{lll}
 \toprule
@@ -383,9 +385,9 @@ $T_0$ than 4 hours, are healthy.
 Table~\ref{tabAckerData} contains data from measurements of the glucose concentration collected during standard Glucose Tolerance Test for two persons~\cite{mahaffy}. The data for each of them were fitted with the function $G(t)$ from equation~\eqref{Eq:GT} by Leas Squares Method in Matlab. The identified parameters are summarized in Table~\ref{tabAckerParams} and the identified curves are depicted in Figure~\ref{Fig:ackerResult}. From the natural periods in Table~\ref{tabAckerParams} one can clearly see that the first person is healthy and the other one suffers from diabetes.
 
 \begin{figure}[!h]
-	\begin{minipage}[t]{0.48\textwidth}
+	\begin{minipage}[b]{0.48\textwidth}
 		\centering
-\renewcommand{\arraystretch}{1.3}  
+\renewcommand{\arraystretch}{1.1}  
 \centering
 \begin{tabular}{lll}
 \toprule
@@ -409,13 +411,13 @@ Table~\ref{tabAckerData} contains data from measurements of the glucose concentr
 5       &80      &90 \\
 \bottomrule
 \end{tabular}
-\caption{Data collected in standard GTT for two persons.}
+\captionof{table}{Data collected in standard GTT for two persons.\\}
 \label{tabAckerData}
 	\end{minipage}
 	\hspace{0.04\textwidth}
-	\begin{minipage}[t]{0.48\textwidth}
+	\begin{minipage}[b]{0.48\textwidth}
 		\centering
-\renewcommand{\arraystretch}{1.3}  
+\renewcommand{\arraystretch}{1.1}  
 \centering
 \begin{tabular}{lll}
 \toprule
@@ -433,8 +435,8 @@ $\omega_0$       		&2.086      	&1.251 \\
 $T_0$     			&3.019     	&5.023 \\
 \bottomrule
 \end{tabular}
-\vspace{31pt}
-\caption{Identified parameters of the time responses of the glucose concentration from the example.}
+%\vspace{31pt}
+\captionof{table}{Identified parameters of the time responses of the glucose concentration from the example.}
 \label{tabAckerParams}
 	\end{minipage}
 \end{figure}
