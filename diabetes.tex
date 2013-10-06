@@ -230,26 +230,26 @@ Bellomo et al. \cite{bellomo} suggest a more specific model of the glucose-insul
 \begin{equation}
 \label{Eq:bellomo}
 \begin{aligned}
- \frac{\m{d}i}{\m{d}t} &= -\underbrace{K_i\,i}_{F_1} + \underbrace{K_g\,(g - g_d)}_{F_2} + \underbrace{K_s\,i_r}_{x}, \\
- \frac{\m{d}g}{\m{d}t} &= \underbrace{K_h\,g - K_0\,g\,i - K_s\,K_f}_{-F_3-F_4} + \underbrace{0}_{y}.
+ \frac{\m{d}i}{\m{d}t} &= -\underbrace{K_{\mathrm{i}}\,i}_{F_1} + \underbrace{K_{\mathrm{g}}\,(g - g_{\mathrm{d}})}_{F_2} + \underbrace{K_{\mathrm{s}}\,i_{\mathrm{r}}}_{x}, \\
+ \frac{\m{d}g}{\m{d}t} &= \underbrace{K_{\mathrm{h}}\,g - K_0\,g\,i - K_{\mathrm{s}}\,K_{\mathrm{f}}}_{-F_3-F_4} + \underbrace{0}_{y}.
 \end{aligned}
 \end{equation}
 Where $i$ is the level of insulin and $g$ level of glucose.
-$K_i, K_g, K_s, K_h, K_f$ and also $g_d$ are some constant coefficients.
+Parameters $K_{\mathrm{i}}, K_{\mathrm{g}}, K_{\mathrm{s}}, K_{\mathrm{h}}, K_{\mathrm{f}}$ and also $g_{\mathrm{d}}$ are some constant coefficients.
 Detailed description of their meaning can be found in \cite{bellomo}.
-Finally $i_r$ represents the rate of insulin infusion (or ingestion) and it's a function of $t$.
+Finally $i_{\mathrm{r}}$ represents the rate of insulin infusion (or ingestion) and it's a function of $t$.
 We use notation from the original paper, but Bellomo's model is a special case of the general Bolie's model.
 In the underbraces, we can see the correspondence between parts of the equations \eqref{Eq:bellomo} to the Bolie's model \eqref{eqbolie}.
 
-The meaning of the term $-K_i\,i$ in the first equation is analogous to the term $-\alpha\,h$ in \eqref{eqLinearized},
-furthermore the term $K_g\,(g - g_d)$ has similar meaning as $\beta\,g$ in \eqref{eqLinearized},
+The meaning of the term $-K_{\mathrm{i}}\,i$ in the first equation is analogous to the term $-\alpha\,h$ in \eqref{eqLinearized},
+furthermore the term $K_{\mathrm{g}}\,(g - g_{\mathrm{d}})$ has similar meaning as $\beta\,g$ in \eqref{eqLinearized},
 except that it takes into account the reduction of insulin deliverance, which occurs during hypoglycemia 
-(low level of blood sugar). This is done by substracting the constant $g_d$.
+(low level of blood sugar). This is done by substracting the constant $g_{\mathrm{d}}$.
 An infusion of insulin of course increases it's level in bloodstream, so we add $i_r$ multiplied by a coefficient
-to the change of insulin in time. The constant $K_s\,K_f$ represents some residual processes in the body,
-which are not of big interest for us. The terms $K_h\,g - K_0\,g\,i$, on the other hand,
+to the change of insulin in time. The constant $K_{\mathrm{s}}\,K_{\mathrm{f}}$ represents some residual processes in the body,
+which are not of big interest for us. The terms $K_{\mathrm{h}}\,g - K_0\,g\,i$, on the other hand,
 are more significant. Their meaning can be probably better understood if we rewrite it like this:
-\[ K_h\,g - K_0\,g\,i = K_n\,g\left(1 - \frac{K_0}{K_n}\,i\right) := K_n\,g(1 - a\,i). \]
+\[ K_{\mathrm{h}}\,g - K_0\,g\,i = K_{\mathrm{n}}\,g\left(1 - \frac{K_0}{K_{\mathrm{n}}}\,i\right) := K_{\mathrm{n}}\,g(1 - a\,i). \]
 Now we can see, that the the level of glucose in bloodstream can actually be growing, if
 the value of $i$ is sufficiently small.
 This is due to a certain time delay between glucose infusion and insulin release.
