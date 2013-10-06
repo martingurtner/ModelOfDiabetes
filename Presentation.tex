@@ -27,7 +27,7 @@
 
 \begin{frame}{Outline}
 \begin{enumerate}
- \item Bilogical background
+ \item Biological background
  \item Bolie's glucose-insulin interaction model and it's linearization
  \item Bellomo's model
  \item Diagnosing diabetes
@@ -62,11 +62,15 @@
 \end{enumerate}
 
 \begin{align*}
-V\frac{\m{d} H}{\m{d} t}&=-F_1(H)&+&F_2(G)&+ &\text{insulin injection rate}\\
-\Bigg[\text{liter}\frac{\text{units}}{\text{liters} \times\text{hours}}&=-\frac{\text{units}}{\text{hour}}&+&\frac{\text{units}}{\text{hour}}&+&\frac{\text{units}}{\text{hour}}\Bigg]
+\underbrace{V}_%
+{\text{liter}}%
+%
+\underbrace{\frac{\m{d} H}{\m{d} t}}_%
+{\frac{\text{unit}}{\text{liter} \times\text{hour}}}
+=%
+\underbrace{-F_1(H)+F_2(G)+\text{insulin injection rate}}%
+_{\frac{\text{unit}}{\text{hour}}}
 \end{align*}
-
-
 
 \end{frame}
 
@@ -81,8 +85,14 @@ V\frac{\m{d} H}{\m{d} t}&=-F_1(H)&+&F_2(G)&+ &\text{insulin injection rate}\\
 \end{enumerate}
 
 \begin{align*}
-V\frac{\m{d} G}{\m{d} t}&=-F_3(H,G)&-&F_4(H,G) &+&\text{glucose injection rate}.\\
-\Bigg[\text{liter}\frac{\text{grams}}{\text{grams} \times\text{hours}}&=-\frac{\text{grams}}{\text{hour}}&-&\frac{\text{grams}}{\text{hour}}&+&\frac{\text{grams}}{\text{hour}}\Bigg]
+\underbrace{V}_%
+{\text{liter}}%
+%
+\underbrace{\frac{\m{d} G}{\m{d} t}}_%
+{\frac{\text{gram}}{\text{liter} \times\text{hour}}}
+=%
+\underbrace{-F_3(H,G)-F_4(H,G) +\text{glucose injection rate}}%
+_{\frac{\text{gram}}{\text{hour}}}
 \end{align*}
 
 
