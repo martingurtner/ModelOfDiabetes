@@ -33,7 +33,7 @@ bottom=2cm, bindingoffset=1cm]{geometry}
 
 \begin{document}
  \begin{center}
-   \Large \textbf{Models for detection of diabetes}
+   \Large \textbf{Insulin-glucose interaction models}
  \end{center}
 \emph{Assumptions about the system:}
 \begin{enumerate}
@@ -47,12 +47,13 @@ bottom=2cm, bindingoffset=1cm]{geometry}
 	A rise in glucose concentration in the bloodstream results in increased glucose absorption by the liver.
 
 \end{enumerate}
+%
 \emph{Bollie's model of glucose-insulin system, general form:}
 \begin{equation*}
-\label{eqbolieEquilibrium}
+\label{eqbolie}
 \begin{aligned}
-V\frac{\m{d}h}{\m{d}t}&=-F_1(H_0+h)+F_2(G_0+g)+ x,\\
-V\frac{\m{d}g}{\m{d}t}&=-F_3(H_0+h,G_0+g)-F_4(H_0+h,G_0+g)+ y.
+V\frac{\m{d} H}{\m{d} t}&=-F_1(H)+F_2(G)+ x,\\
+V\frac{\m{d} G}{\m{d} t}&=-F_3(H,G)-F_4(H,G) + y. 
 \end{aligned}
 \end{equation*}
 \emph{Linearized form:}
@@ -63,6 +64,43 @@ V\frac{\m{d}g}{\m{d}t}&=-F_3(H_0+h,G_0+g)-F_4(H_0+h,G_0+g)+ y.
 \frac{\m{d}g}{\m{d}t}&=-\gamma h - \delta g.\\
 \end{aligned}
 \end{equation*}
+
+
+
+\begin{table}[h]
+\renewcommand{\arraystretch}{0.8}  
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Symbol}  & \textbf{Meaning} & \textbf{Dimension}\\
+\midrule
+$V$ & volume & \si{\liter}\\
+\rowcolor{Gray}
+$x$ & rate of insulin injection & units \si{\per\hour}\\
+
+$y$ & rate of glucose injection & \si{\gram\per\hour}\\
+\rowcolor{Gray}
+$H$ & insulin concentration & units \si{\per\liter}\\
+\rowcolor{Gray}
+$h$ & insulin concentration changes & units \si{\per\liter}\\
+$G$ & glucose concentration & \si{\gram\per\liter}\\
+\rowcolor{Gray}
+$g$ & glucose concentration changes & \si{\gram\per\liter}\\
+\rowcolor{Gray}
+$F_1(H)$ & rate of insulin destruction & units \si{\per\hour}\\
+$F_2(G)$ & rate of insulin production & units \si{\per\hour}\\
+
+\rowcolor{Gray}
+$F_3(H,G)$ & rate of liver accumulation of glucose & \si{\gram\per\hour}\\
+$F_4(H,G)$ & rate of tissue utilization of glucose & \si{\gram\per\hour}\\
+\bottomrule
+\end{tabular}
+\caption{Diabetes model parameters.}
+\label{tabParam}
+\end{table}
+%
+%
+%
 \emph{Bellomo's model:}
 \begin{equation*}
 \label{Eq:bellomo}
