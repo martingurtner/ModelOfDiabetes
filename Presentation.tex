@@ -25,13 +25,30 @@
 \begin{document}
 
 
-\begin{frame}{Summary}
+\begin{frame}{Outline}
+\begin{enumerate}
+ \item Bilogical background
+ \item Bolie's glucose-insulin interaction model and it's linearization
+ \item Bellomo's model
+ \item Diagnosing diabetes
+\end{enumerate}
+
 
 \end{frame}
 
 % Jachymovy slajdy ----------
-\begin{frame}{ }
+\begin{frame}{Biological facts and assumptions}
+\begin{enumerate}
+	\item
+	Insulin is being degraded by the liver.	
+	\item
+	A rise in the concentration of glucose in the bloodstream results in increased production of insulin by the pancreas.
+	\item
+	With increasing concentration of insulin, the glucose is more easily absorbed by the cells, i.e. it leaves the bloodstream more quickly.
+	\item
+	A rise in glucose concentration in the bloodstream results in increased glucose absorption by the liver.
 
+\end{enumerate}
 \end{frame}
 
 % Jiriho slajdy ----------
@@ -146,6 +163,20 @@ What happens according to the model when a patient gets a dose of glucose?\\
 \begin{equation*}	
 	A = g_0\,\frac{\delta+\lambda_2}{\lambda_2-\lambda_1}, \qquad B = g_0\,\frac{\delta+\lambda_1}{\lambda_1-\lambda_2}.
 \end{equation*}
+
+
+\end{frame}
+
+% Opět Jáchymovy slajdy
+\begin{frame}{Bellomo's model}
+A special case of the general Bolie's model
+\begin{align*}
+ \frac{\m{d}i}{\m{d}t} &= -\underbrace{K_{\mathrm{i}}\,i}_{F_1} + \underbrace{K_{\mathrm{g}}\,(g - g_{\mathrm{d}})}_{F_2} + \underbrace{K_{\mathrm{s}}\,i_{\mathrm{r}}}_{x}, \\
+ \frac{\m{d}g}{\m{d}t} &= \underbrace{K_{\mathrm{h}}\,g - K_0\,g\,i - K_{\mathrm{s}}\,K_{\mathrm{f}}}_{-F_3-F_4} + \underbrace{0}_{y}.
+\end{align*}
+How do we interpret the terms $K_{\mathrm{h}}\,g - K_0\,g\,i - K_{\mathrm{s}}\,K_{\mathrm{f}}$?
+\[ K_{\mathrm{h}}\,g - K_0\,g\,i = K_{\mathrm{n}}\,g\left(1 - \frac{K_0}{K_{\mathrm{n}}}\,i\right) := K_{\mathrm{n}}\,g(1 - a\,i). \]
+
 
 
 \end{frame}
