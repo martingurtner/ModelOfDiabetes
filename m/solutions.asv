@@ -52,18 +52,4 @@ Ah = -(l1+delta)*(l2+delta)/(l2-l1)/gamma;
 Bh = (l1+delta)*(l2+delta)/(l2-l1)/gamma;
 
 %% Plot Pres
-close all;
-sPlot = plotset(t, y(:,1), 'Color', [0 0 0]);
-plot_(sPlot, 'xlabel', 'Time [hours]', ...
-    'ylabel', 'Glucose connc. [Grams/liter]');
 
-set(gcf, 'PaperPositionMode', 'auto');
-print -depsc2 ../figs/boliesTestGlucosePres.eps
-
-figure(1);
-sPlot = plotset(t, y(:,2), 'Color', [0 0 0]);
-plot_(sPlot, 'xlabel', 'Time [hours]', ...
-    'ylabel', 'Insuline connc. [Units/liter]');
-
-set(gcf, 'PaperPositionMode', 'auto');
-print -depsc2 ../figs/boliesTestInsulinPres.eps
