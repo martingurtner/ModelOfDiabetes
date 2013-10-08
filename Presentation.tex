@@ -58,7 +58,7 @@
 	\item
 	Insulin is being degraded by the liver.	
 	\item
-	A rise in the concentration of glucose in the 			bloodstream results in increased production of 			insulin by the pancreas.
+	More glucose in the bloodstream results in faster production of insulin.
 \end{enumerate}
 
 \begin{align*}
@@ -79,9 +79,9 @@ _{\frac{\text{unit}}{\text{hour}}}
 \begin{enumerate}
 \setcounter{enumi}{2}
 	\item
-	With increasing concentration of insulin, the glucose is more easily absorbed by the cells, i.e. it leaves the bloodstream more quickly.
+	With more insulin, glucose disappears from the bloodstream more quickly. 
 	\item
-	A rise in glucose concentration in the bloodstream results in increased glucose absorption by the liver.
+	Glucose is degraded more quickly when more concentrated
 \end{enumerate}
 
 \begin{align*}
@@ -123,9 +123,9 @@ V\frac{\m{d}g}{\m{d}t}&=-F_3(H_0+h,G_0+g)-F_4(H_0+h,G_0+g)+ \text{g. injection r
 \frac{\m{d}g}{\m{d}t}&=%
 %
 -\underbrace{%
-\left(\frac{1}{V}\frac{\p F_3(\mathbf{e}_0)}{\p H}+\frac{\p F_4(\mathbf{e}_0)}{\p H}\right)}_{\gamma}h%
+\frac{1}{V}\left(\frac{\p F_3(\mathbf{e}_0)}{\p H}+\frac{\p F_4(\mathbf{e}_0)}{\p H}\right)}_{\gamma}h%
 -\underbrace{%
-\left(\frac{1}{V}\frac{\p F_3(\mathbf{e}_0)}{\p G}+\frac{\p F_4(\mathbf{e}_0)}{\p G}\right)}_{\delta} g+\mathcal{O}(2).
+\frac{1}{V}\left(\frac{\p F_3(\mathbf{e}_0)}{\p G}+\frac{\p F_4(\mathbf{e}_0)}{\p G}\right)}_{\delta} g+\mathcal{O}(2).
 \end{align*}
 
 
@@ -143,39 +143,44 @@ System of 1\textsuperscript{st} order equations
 
 Reduced 2\textsuperscript{nd} order equation
 \begin{equation*}
-	\ddot g+(\gamma+\beta)\dot g+(\beta \gamma+\delta \alpha)g=0.
+	\ddot g+\underbrace{%
+	(\gamma+\beta)}%
+	_{- \text{trace }> \,0}%
+	\dot g+\underbrace{%
+	(\beta \gamma+\delta \alpha)}%
+	_{\text{determinant }> \,0}g=0.
 \end{equation*}
 
-Eigenvalues and general solution
-\begin{equation*}
-	\lambda_{1,2}=\frac{1}{2}\left(-(\gamma+\beta)\pm \sqrt{(\gamma+\beta)^2-4(\beta\gamma+\delta\alpha)}\right).
-\end{equation*}
-
-\begin{equation*}
-	g(t) = A\,e^{\lambda_1 \, t} + B\,e^{\lambda_2 \, t}.
-\end{equation*}
+%Eigenvalues and general solution
+%\begin{equation*}
+%	\lambda_{1,2}=\frac{1}{2}\left(-(\gamma+\beta)\pm \sqrt{(\gamma+\beta)^2-4(\beta\gamma+\delta\alpha)}\right).
+%\end{equation*}
+%
+%\begin{equation*}
+%	g(t) = A\,e^{\lambda_1 \, t} + B\,e^{\lambda_2 \, t}.
+%\end{equation*}
 
 \end{frame}
 
-\begin{frame}{Initial conditions response of the Bolie's model}
-\begin{equation*}
-	\ddot g+(\gamma+\beta)\dot g+(\beta \gamma+\delta \alpha)g=0.
-\end{equation*}\\
-\vspace{1cm}
-What happens according to the model when a patient gets a dose of glucose?\\
-
-\centering{$g(t_0=0) = g_0\,$ and $\,h(t_0=0)=0$}
-
-\begin{equation*}
-\dot g=-\gamma h - \delta g \quad \Rightarrow \quad h = -\frac{1}{\gamma}\left( \dot{g} + \delta\,g \right) \quad \Rightarrow  \quad \dot g(t_0=0)=-\delta g_0
-\end{equation*}
-
-\begin{equation*}	
-	A = g_0\,\frac{\delta+\lambda_2}{\lambda_2-\lambda_1}, \qquad B = g_0\,\frac{\delta+\lambda_1}{\lambda_1-\lambda_2}.
-\end{equation*}
-
-
-\end{frame}
+%\begin{frame}{Initial conditions response of the Bolie's model}
+%\begin{equation*}
+%	\ddot g+(\gamma+\beta)\dot g+(\beta \gamma+\delta \alpha)g=0.
+%\end{equation*}\\
+%\vspace{1cm}
+%What happens according to the model when a patient gets a dose of glucose?\\
+%
+%\centering{$g(t_0=0) = g_0\,$ and $\,h(t_0=0)=0$}
+%
+%\begin{equation*}
+%\dot g=-\gamma h - \delta g \quad \Rightarrow \quad h = -\frac{1}{\gamma}\left( \dot{g} + \delta\,g \right) \quad \Rightarrow  \quad \dot g(t_0=0)=-\delta g_0
+%\end{equation*}
+%
+%\begin{equation*}	
+%	A = g_0\,\frac{\delta+\lambda_2}{\lambda_2-\lambda_1}, \qquad B = g_0\,\frac{\delta+\lambda_1}{\lambda_1-\lambda_2}.
+%\end{equation*}
+%
+%
+%\end{frame}
 
 % Opět Jáchymovy slajdy
 \begin{frame}{Bellomo's model}

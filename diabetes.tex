@@ -123,9 +123,9 @@ For small changes around the equilibrium it is possible to use linearized model.
 \frac{\m{d}g}{\m{d}t}&=-\frac{1}{V}\frac{\p F_3(H_0, G_0)}{\p H}h- \frac{1}{V}\frac{\p F_3(H_0, G_0)}{\p G}g-\frac{1}{V}\frac{\p F_4(H_0, G_0)}{\p H}h-\frac{1}{V}\frac{\p F_4(H_0, G_0)}{\p G}g+\mathcal{O}(2)\\%
 %
 &=-\underbrace{%
-\left(\frac{1}{V}\frac{\p F_3(H_0, G_0)}{\p H}+\frac{\p F_4(H_0, G_0)}{\p H}\right)}_{\gamma}h%
+\frac{1}{V}\left(\frac{\p F_3(H_0, G_0)}{\p H}+\frac{\p F_4(H_0, G_0)}{\p H}\right)}_{\gamma}h%
 -\underbrace{%
-\left(\frac{1}{V}\frac{\p F_3(H_0, G_0)}{\p G}+\frac{\p F_4(H_0, G_0)}{\p G}\right)}_{\delta} g+\mathcal{O}(2).
+\frac{1}{V}\left(\frac{\p F_3(H_0, G_0)}{\p G}+\frac{\p F_4(H_0, G_0)}{\p G}\right)}_{\delta} g+\mathcal{O}(2).
 \end{align*}
 
 By omitting the second and higher order terms we get the following linear model:
