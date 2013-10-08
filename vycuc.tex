@@ -32,9 +32,13 @@ bottom=2cm, bindingoffset=1cm]{geometry}
 \usetikzlibrary{shapes,arrows,decorations.markings}
 
 \begin{document}
- \begin{center}
-   \Large \textbf{Insulin-glucose interaction models}
- \end{center}
+
+\title{Insulin-glucose interaction models}
+\author{J\'achym Barv\'inek, Ji\v r\'i Figura, Martin Gurtner}
+
+\maketitle
+
+
 \emph{Assumptions about the system:}
 \begin{enumerate}
 	\item
@@ -47,7 +51,8 @@ bottom=2cm, bindingoffset=1cm]{geometry}
 	A rise in glucose concentration in the bloodstream results in increased glucose absorption by the liver.
 
 \end{enumerate}
-%
+
+
 \emph{Bollie's model of glucose-insulin system, general form:}
 \begin{equation*}
 \label{eqbolie}
@@ -56,6 +61,7 @@ V\frac{\m{d} H}{\m{d} t}&=-F_1(H)+F_2(G)+ x,\\
 V\frac{\m{d} G}{\m{d} t}&=-F_3(H,G)-F_4(H,G) + y. 
 \end{aligned}
 \end{equation*}
+
 \emph{Linearized form:}
 \begin{equation*}
 \label{eqLinearized}
@@ -98,9 +104,9 @@ $F_4(H,G)$ & rate of tissue utilization of glucose & \si{\gram\per\hour}\\
 \caption{Diabetes model parameters.}
 \label{tabParam}
 \end{table}
-%
-%
-%
+
+
+
 \emph{Bellomo's model:}
 \begin{equation*}
 \label{Eq:bellomo}
@@ -109,6 +115,8 @@ $F_4(H,G)$ & rate of tissue utilization of glucose & \si{\gram\per\hour}\\
  \frac{\m{d}g}{\m{d}t} &= \underbrace{K_{\mathrm{h}}\,g - K_0\,g\,i - K_{\mathrm{s}}\,K_{\mathrm{f}}}_{-F_3-F_4} + \underbrace{0}_{y}.
 \end{aligned}
 \end{equation*}
-\emph{Overall glucose concentration in bloodstream:}
+
+\emph{Overall glucose concentration in bloodstream according to Ackerman:}
 \[G(t) = G_0 + C\,e^{-\sigma t}\cos ( \omega t  - \varphi) \]
+
 \end{document}
